@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300">
+  <defs>
+    <linearGradient id="dspBar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#888"/><stop offset="100%" stop-color="#00d2a0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="720" height="300" fill="#fff" rx="8"/>
+  <text x="360" y="24" text-anchor="middle" font-size="14" font-weight="bold" fill="#1a2a44">DOTOCOME DSP Digital Control Platform Evolution — 5 Generations</text>
+
+  <!-- Gen 1 -->
+  <g transform="translate(20,50)">
+    <rect x="0" y="0" width="155" height="235" rx="8" fill="#f8fafc" stroke="#ccc" stroke-width="1.5"/>
+    <rect x="0" y="0" width="155" height="30" rx="8" fill="#d0d5dd"/>
+    <rect x="0" y="15" width="155" height="15" fill="#d0d5dd"/>
+    <text x="77" y="20" text-anchor="middle" font-size="10" font-weight="bold" fill="#555">Gen 1 · 2020</text>
+    <text x="77" y="44" text-anchor="middle" font-size="8" fill="#888">Analog Control</text>
+    <text x="10" y="65" font-size="8" fill="#666">Chip: UCC28180</text>
+    <text x="10" y="80" font-size="8" fill="#666">+ CM6901</text>
+    <text x="10" y="100" font-size="7" fill="#999">PFC: Analog CCM</text>
+    <text x="10" y="113" font-size="7" fill="#999">LLC: Analog HB</text>
+    <text x="10" y="131" font-size="7" fill="#999">No PMBus</text>
+    <text x="10" y="144" font-size="7" fill="#999">No Digital Monitor</text>
+    <rect x="10" y="160" width="135" height="20" rx="3" fill="#eee"/>
+    <text x="77" y="174" text-anchor="middle" font-size="7" fill="#888">550-800W Gold/Pt</text>
+    <text x="77" y="200" text-anchor="middle" font-size="9" font-weight="bold" fill="#888">Efficiency: 92-94%</text>
+  </g>
+
+  <!-- Gen 2 -->
+  <g transform="translate(190,50)">
+    <rect x="0" y="0" width="155" height="235" rx="8" fill="#f8fafc" stroke="#aaa" stroke-width="1.5"/>
+    <rect x="0" y="0" width="155" height="30" rx="8" fill="#c0c5ca"/>
+    <rect x="0" y="15" width="155" height="15" fill="#c0c5ca"/>
+    <text x="77" y="20" text-anchor="middle" font-size="10" font-weight="bold" fill="#555">Gen 2 · 2021</text>
+    <text x="77" y="44" text-anchor="middle" font-size="8" fill="#888">16-bit DSC</text>
+    <text x="10" y="65" font-size="8" fill="#666">Chip: dsPIC33FJ</text>
+    <text x="10" y="80" font-size="8" fill="#666">64GS606-E/PT</text>
+    <text x="10" y="100" font-size="7" fill="#999">10-bit ADC</text>
+    <text x="10" y="113" font-size="7" fill="#999">Digital PFC + LLC</text>
+    <text x="10" y="131" font-size="7" fill="#999">PMBus 1.1</text>
+    <text x="10" y="144" font-size="7" fill="#999">Basic Telemetry</text>
+    <rect x="10" y="160" width="135" height="20" rx="3" fill="#eee"/>
+    <text x="77" y="174" text-anchor="middle" font-size="7" fill="#888">800-1600W Platinum</text>
+    <text x="77" y="200" text-anchor="middle" font-size="9" font-weight="bold" fill="#888">Efficiency: 94-95%</text>
+  </g>
+
+  <!-- Gen 3 -->
+  <g transform="translate(360,45)">
+    <rect x="0" y="0" width="165" height="240" rx="8" fill="#f8fafc" stroke="#00a0d2" stroke-width="2"/>
+    <rect x="0" y="0" width="165" height="30" rx="8" fill="#00a0d2"/>
+    <rect x="0" y="15" width="165" height="15" fill="#00a0d2"/>
+    <text x="82" y="20" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">Gen 3 · 2022</text>
+    <text x="82" y="44" text-anchor="middle" font-size="8" fill="#00a0d2">32-bit ARM + DPWM</text>
+    <text x="10" y="65" font-size="8" fill="#666">Chip: UCD3138A</text>
+    <text x="10" y="80" font-size="8" fill="#666">(Texas Instruments)</text>
+    <text x="10" y="100" font-size="7" fill="#999">12-bit ADC</text>
+    <text x="10" y="113" font-size="7" fill="#999">3P3Z Digital Comp.</text>
+    <text x="10" y="131" font-size="7" fill="#999">PMBus 1.2</text>
+    <text x="10" y="144" font-size="7" fill="#999">Active Current Share</text>
+    <rect x="10" y="160" width="145" height="20" rx="3" fill="#e0f0f8"/>
+    <text x="82" y="174" text-anchor="middle" font-size="7" fill="#00a0d2">1600-2700W Titanium</text>
+    <text x="82" y="200" text-anchor="middle" font-size="9" font-weight="bold" fill="#00a0d2">Efficiency: 96-96.5%</text>
+  </g>
+
+  <!-- Gen 4 -->
+  <g transform="translate(540,40)">
+    <rect x="0" y="0" width="165" height="245" rx="8" fill="#f8f6ff" stroke="#6c5ce7" stroke-width="2.5"/>
+    <rect x="0" y="0" width="165" height="30" rx="8" fill="#6c5ce7"/>
+    <rect x="0" y="15" width="165" height="15" fill="#6c5ce7"/>
+    <text x="82" y="20" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">Gen 4 · 2023-24</text>
+    <text x="82" y="44" text-anchor="middle" font-size="8" fill="#6c5ce7">Cortex-M4F + HRTIM</text>
+    <text x="10" y="65" font-size="8" fill="#666">Chip: STM32G474</text>
+    <text x="10" y="80" font-size="8" fill="#666">(ST Microelectronics)</text>
+    <text x="10" y="100" font-size="7" fill="#999">12-bit / 5MSPS</text>
+    <text x="10" y="113" font-size="7" fill="#999">HRTIM 184ps</text>
+    <text x="10" y="131" font-size="7" fill="#999">PMBus 1.2+ / I²C</text>
+    <text x="10" y="144" font-size="7" fill="#999">Black Box 32KB FRAM</text>
+    <text x="10" y="157" font-size="7" fill="#999">CDL Capacitor Monitor</text>
+    <rect x="10" y="175" width="145" height="20" rx="3" fill="#f0ecff"/>
+    <text x="82" y="189" text-anchor="middle" font-size="7" fill="#6c5ce7">2700-4000W Titanium+</text>
+    <text x="82" y="215" text-anchor="middle" font-size="9" font-weight="bold" fill="#6c5ce7">Efficiency: 96.5-97.5%</text>
+  </g>
+
+  <!-- Gen 5 arrow -->
+  <g transform="translate(555,295)">
+    <rect x="0" y="-8" width="155" height="24" rx="12" fill="#f0fdf8" stroke="#00d2a0" stroke-width="2" stroke-dasharray="4,2"/>
+    <text x="77" y="9" text-anchor="middle" font-size="9" font-weight="bold" fill="#00d2a0">Gen 5 · 2025-26 →</text>
+    <text x="77" y="-12" text-anchor="middle" font-size="7" fill="#00d2a0">Multi-Core DSP + CPLD</text>
+  </g>
+
+  <!-- Bottom key -->
+  <rect x="30" y="288" width="660" height="10" rx="2" fill="#f8fafc"/>
+  <text x="40" y="296" font-size="6" fill="#bbb">Key Features Progression: Analog → Digital → ARM → AI-Optimized DSP</text>
+</svg>

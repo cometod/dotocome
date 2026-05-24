@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/><stop offset="100%" stop-color="#f0f4f8"/>
+    </linearGradient>
+    <linearGradient id="tpfc" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6c5ce7"/><stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+    <linearGradient id="ccm" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#888"/><stop offset="100%" stop-color="#aaa"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="720" height="340" fill="url(#bg)" rx="10"/>
+
+  <text x="360" y="26" text-anchor="middle" font-size="14" font-weight="bold" fill="#1a2a44">PFC Topology Efficiency Comparison — Totem-Pole PFC (SiC) vs Traditional CCM Boost PFC</text>
+
+  <!-- Left: Traditional -->
+  <rect x="30" y="50" width="310" height="270" rx="8" fill="#fff" stroke="#ccc" stroke-width="1.5"/>
+  <text x="185" y="75" text-anchor="middle" font-size="13" font-weight="bold" fill="#666">Traditional CCM Boost PFC</text>
+
+  <!-- Boost Circuit Schematic -->
+  <g transform="translate(60,90)">
+    <rect x="0" y="0" width="250" height="90" rx="6" fill="#f5f5f5" stroke="#ddd" stroke-width="1"/>
+    <text x="125" y="18" text-anchor="middle" font-size="9" fill="#888">Bridge Diode ×2 → Boost Inductor → Si MOSFET → SiC Diode → Bulk Cap</text>
+    <!-- Simple circuit representation -->
+    <rect x="15" y="30" width="30" height="30" rx="3" fill="#e8eaed" stroke="#999" stroke-width="1"/><text x="30" y="50" text-anchor="middle" font-size="7" fill="#666">BD</text>
+    <line x1="45" y1="45" x2="65" y2="45" stroke="#666" stroke-width="1"/>
+    <circle x="75" cy="45" r="10" fill="none" stroke="#666" stroke-width="1.5"/><text x="75" y="48" text-anchor="middle" font-size="6" fill="#666">L</text>
+    <line x1="85" y1="45" x2="100" y2="45" stroke="#666" stroke-width="1"/>
+    <rect x="100" y="33" width="22" height="24" rx="2" fill="#dde" stroke="#666" stroke-width="1"/><text x="111" y="49" text-anchor="middle" font-size="6" fill="#555">Q</text>
+    <line x1="122" y1="45" x2="140" y2="45" stroke="#666" stroke-width="1"/>
+    <polygon points="145,35 145,55 155,45" fill="#eee" stroke="#666" stroke-width="1"/><text x="150" y="62" text-anchor="middle" font-size="6" fill="#666">D</text>
+    <line x1="155" y1="45" x2="170" y2="45" stroke="#666" stroke-width="1"/>
+    <rect x="170" y="33" width="35" height="24" rx="2" fill="#eef" stroke="#666" stroke-width="1"/><text x="187" y="49" text-anchor="middle" font-size="6" fill="#555">C</text>
+    <line x1="205" y1="45" x2="235" y2="45" stroke="#666" stroke-width="1"/>
+    <text x="125" y="82" text-anchor="middle" font-size="7" fill="#888">Conduction Path: 2×Vf(Diode) + Rds(on) + Vf(SiC D)</text>
+  </g>
+
+  <!-- Loss breakdown for Traditional -->
+  <g transform="translate(60,190)">
+    <text x="0" y="0" font-size="9" font-weight="bold" fill="#666">Loss Breakdown @ 230VAC / 1200W (50% load)</text>
+    <rect x="0" y="8" width="250" height="14" rx="2" fill="#eee"/>
+    <rect x="0" y="8" width="125" height="14" rx="2" fill="#e76f51"/>
+    <text x="130" y="19" text-anchor="start" font-size="8" fill="#e76f51">Bridge Diode ~5W (41%)</text>
+    <rect x="0" y="26" width="250" height="14" rx="2" fill="#eee"/>
+    <rect x="0" y="26" width="85" height="14" rx="2" fill="#f0a020"/>
+    <text x="90" y="37" text-anchor="start" font-size="8" fill="#f0a020">Boost Switch ~3.4W (28%)</text>
+    <rect x="0" y="44" width="250" height="14" rx="2" fill="#eee"/>
+    <rect x="0" y="44" width="55" height="14" rx="2" fill="#6c5ce7"/>
+    <text x="60" y="55" text-anchor="start" font-size="8" fill="#6c5ce7">SiC Diode ~2.2W (18%)</text>
+    <rect x="0" y="62" width="250" height="14" rx="2" fill="#eee"/>
+    <rect x="0" y="62" width="38" height="14" rx="2" fill="#00a0d2"/>
+    <text x="43" y="73" text-anchor="start" font-size="8" fill="#00a0d2">Inductor+Other ~1.5W (13%)</text>
+    <text x="0" y="90" font-size="9" font-weight="bold" fill="#e76f51">Total Loss: ~12.1W → Efficiency: ~98.0%</text>
+  </g>
+
+  <!-- Right: Totem-Pole -->
+  <rect x="380" y="50" width="310" height="270" rx="8" fill="#f8f6ff" stroke="#6c5ce7" stroke-width="1.5"/>
+  <text x="535" y="75" text-anchor="middle" font-size="13" font-weight="bold" fill="#6c5ce7">Totem-Pole PFC (SiC/GaN) ★</text>
+
+  <!-- TPFC Circuit -->
+  <g transform="translate(410,90)">
+    <rect x="0" y="0" width="250" height="90" rx="6" fill="#f5f3ff" stroke="#c4b5fd" stroke-width="1"/>
+    <text x="125" y="18" text-anchor="middle" font-size="9" fill="#7c6ee0">Active Bridge → Boost Inductor → 2× SiC/GaN MOSFET → Bulk Cap</text>
+    <rect x="15" y="30" width="30" height="30" rx="3" fill="#e8e0ff" stroke="#7c6ee0" stroke-width="1"/><text x="30" y="50" text-anchor="middle" font-size="7" fill="#6c5ce7">AB</text>
+    <line x1="45" y1="45" x2="65" y2="45" stroke="#7c6ee0" stroke-width="1"/>
+    <circle x="75" cy="45" r="10" fill="none" stroke="#7c6ee0" stroke-width="1.5"/><text x="75" y="48" text-anchor="middle" font-size="6" fill="#6c5ce7">L</text>
+    <line x1="85" y1="45" x2="100" y2="45" stroke="#7c6ee0" stroke-width="1"/>
+    <rect x="100" y="33" width="22" height="24" rx="2" fill="#dde0ff" stroke="#7c6ee0" stroke-width="1"/><text x="111" y="49" text-anchor="middle" font-size="6" fill="#6c5ce7">Q1</text>
+    <rect x="122" y="33" width="22" height="24" rx="2" fill="#dde0ff" stroke="#7c6ee0" stroke-width="1"/><text x="133" y="49" text-anchor="middle" font-size="6" fill="#6c5ce7">Q2</text>
+    <line x1="144" y1="45" x2="170" y2="45" stroke="#7c6ee0" stroke-width="1"/>
+    <rect x="170" y="33" width="35" height="24" rx="2" fill="#eef" stroke="#7c6ee0" stroke-width="1"/><text x="187" y="49" text-anchor="middle" font-size="6" fill="#6c5ce7">C</text>
+    <line x1="205" y1="45" x2="235" y2="45" stroke="#7c6ee0" stroke-width="1"/>
+    <text x="125" y="82" text-anchor="middle" font-size="7" fill="#7c6ee0">Conduction Path: Rds(on) only (no diode Vf!)</text>
+  </g>
+
+  <!-- Loss breakdown for TPFC -->
+  <g transform="translate(410,190)">
+    <text x="0" y="0" font-size="9" font-weight="bold" fill="#6c5ce7">Loss Breakdown @ 230VAC / 1200W (50% load)</text>
+    <rect x="0" y="8" width="250" height="14" rx="2" fill="#eee"/>
+    <rect x="0" y="8" width="42" height="14" rx="2" fill="#00d2a0"/>
+    <text x="47" y="19" text-anchor="start" font-size="8" fill="#00d2a0">Active Bridge ~1.7W (22%)</text>
+    <rect x="0" y="26" width="250" height="14" rx="2" fill="#eee"/>
+    <rect x="0" y="26" width="65" height="14" rx="2" fill="#f0a020"/>
+    <text x="70" y="37" text-anchor="start" font-size="8" fill="#f0a020">SiC/GaN MOSFET ×2 ~2.6W (34%)</text>
+    <rect x="0" y="44" width="250" height="14" rx="2" fill="#eee"/>
+    <rect x="0" y="44" width="25" height="14" rx="2" fill="#6c5ce7"/>
+    <text x="30" y="55" text-anchor="start" font-size="8" fill="#6c5ce7">Switch Loss ~1.0W (13%)</text>
+    <rect x="0" y="62" width="250" height="14" rx="2" fill="#eee"/>
+    <rect x="0" y="62" width="35" height="14" rx="2" fill="#00a0d2"/>
+    <text x="40" y="73" text-anchor="start" font-size="8" fill="#00a0d2">Inductor+Other ~1.4W (18%)</text>
+    <text x="0" y="90" font-size="9" font-weight="bold" fill="#00d2a0">Total Loss: ~7.6W → Efficiency: ~98.7% (+0.7% ↑)</text>
+  </g>
+
+  <!-- Bottom comparison bar -->
+  <rect x="30" y="314" width="660" height="20" rx="4" fill="#fff" stroke="#ddd" stroke-width="1"/>
+  <rect x="30" y="314" width="330" height="20" rx="4" fill="#eee"/>
+  <text x="195" y="328" text-anchor="middle" font-size="9" font-weight="bold" fill="#888">CCM Boost: 98.0%</text>
+  <text x="525" y="328" text-anchor="middle" font-size="9" font-weight="bold" fill="#6c5ce7">TPFC (SiC): 98.7% → +0.7% Efficiency Gain ★</text>
+</svg>
