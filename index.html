@@ -117,6 +117,13 @@
   .highlight-box h4 { color:#0a1628; margin-bottom:8px; }
   .highlight-box p { font-size:13px; color:#555; }
 
+  /* 访客统计 */
+  .stats-bar { background:#fff; border-radius:12px; padding:20px 30px; margin-bottom:28px; box-shadow:0 2px 12px rgba(0,0,0,0.05); display:flex; justify-content:center; gap:40px; flex-wrap:wrap; text-align:center; }
+  .stats-bar .st-item .st-num { font-size:28px; font-weight:900; color:#0a1628; }
+  .stats-bar .st-item .st-lbl { font-size:12px; color:#888; margin-top:4px; }
+  .stats-bar .st-divider { width:1px; background:#e8eaed; }
+  @media (max-width:768px) { .stats-bar { gap:20px; } .stats-bar .st-divider { display:none; } }
+
   .footer { text-align:center; padding:30px; color:#999; font-size:11px; border-top:1px solid #e0e0e0; margin-top:30px; }
   .footer strong { color:#555; }
 
@@ -824,6 +831,24 @@
   </div>
 </div>
 
+<!-- ===== 访客统计 Visitor Stats ===== -->
+<div class="stats-bar" id="statsBar" style="display:none;">
+  <div class="st-item">
+    <div class="st-num" id="totalViews">-</div>
+    <div class="st-lbl zh">总访问量</div><div class="st-lbl en">Total Views</div>
+  </div>
+  <div class="st-divider"></div>
+  <div class="st-item">
+    <div class="st-num" id="todayViews">-</div>
+    <div class="st-lbl zh">今日访问</div><div class="st-lbl en">Today</div>
+  </div>
+  <div class="st-divider"></div>
+  <div class="st-item">
+    <div class="st-num" id="activeVisitors">-</div>
+    <div class="st-lbl zh">在线访客</div><div class="st-lbl en">Online</div>
+  </div>
+</div>
+
 <!-- ===== 页脚 Footer ===== -->
 <div class="footer">
   <p><strong>DOTOCOME Power Technology</strong> — Power the AI Revolution</p>
@@ -856,6 +881,47 @@
   var saved = null;
   try { saved = localStorage.getItem('dotocome-lang'); } catch(e) {}
   if (saved === 'en') setLang('en');
+})();
+
+// ===== 访客统计 Visitor Counter =====
+(function() {
+  var NS = 'dotocome-power';
+  var KEY_TOTAL = 'total-views';
+  var KEY_TODAY = 'today-' + new Date().toISOString().slice(0,10).replace(/-/g,'');
+  var API = 'https://api.countapi.xyz';
+
+  function fetchJSON(url, cb) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url);
+    xhr.timeout = 5000;
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        try { cb(JSON.parse(xhr.responseText)); } catch(e) {}
+      }
+    };
+    xhr.send();
+  }
+
+  // Hit the counter (creates if not exists)
+  fetchJSON(API + '/hit/' + NS + '/' + KEY_TOTAL, function(data) {
+    document.getElementById('totalViews').textContent = (data.value || 0).toLocaleString();
+  });
+
+  // Get today's unique views
+  fetchJSON(API + '/hit/' + NS + '/' + KEY_TODAY, function(data) {
+    document.getElementById('todayViews').textContent = (data.value || 0).toLocaleString();
+  });
+
+  // Active visitors (rough: count sessions within last 5 minutes)
+  var activeKey = 'active-' + Math.floor(Date.now() / 300000);
+  fetchJSON(API + '/hit/' + NS + '/' + activeKey, function(data) {
+    document.getElementById('activeVisitors').textContent = Math.max(1, data.value || 1);
+    // Reset count for old keys
+    fetchJSON(API + '/update/' + NS + '/' + activeKey + '?value=1', function(){});
+  });
+
+  // Show the stats bar
+  document.getElementById('statsBar').style.display = 'flex';
 })();
 </script>
 
