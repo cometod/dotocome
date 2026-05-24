@@ -8,35 +8,29 @@
   @media print { body { background:#fff; } .page-break { page-break-before:always; } .lang-switch { display:none; } }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:'Microsoft YaHei','PingFang SC',sans-serif; background:#f5f6f8; color:#1a1a2e; line-height:1.7; font-size:14px; }
-  body.en { font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,sans-serif; }
+  body.lang-en { font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,sans-serif; }
 
-  /* 语言切换 */
   .lang-switch { position:fixed; top:16px; right:16px; z-index:9999; display:flex; gap:0; background:#fff; border-radius:8px; box-shadow:0 2px 16px rgba(0,0,0,0.12); overflow:hidden; }
   .lang-switch button { border:none; padding:10px 16px; font-size:13px; font-weight:600; cursor:pointer; transition:all .2s; background:#f5f6f8; color:#888; }
   .lang-switch button.active { background:linear-gradient(135deg,#00a0d2,#00d2a0); color:#fff; }
   .lang-switch button:hover:not(.active) { background:#e8eaed; }
 
-  /* 默认中文，隐藏英文 */
   .en { display:none; }
   body.lang-en .zh { display:none; }
   body.lang-en .en { display:inline; }
-  /* block元素需要 */
   body.lang-en .en-block { display:block; }
   body.lang-en .zh-block { display:none; }
   body.lang-zh .en-block { display:none; }
   body.lang-zh .zh-block { display:block; }
-  /* flex元素 */
   body.lang-en .en-inline { display:inline; }
   body.lang-zh .en-inline { display:none; }
   body.lang-zh .zh-inline { display:inline; }
   body.lang-en .zh-inline { display:none; }
-  /* table-cell */
   body.lang-en .en-cell { display:table-cell; }
   body.lang-zh .en-cell { display:none; }
   body.lang-zh .zh-cell { display:table-cell; }
   body.lang-en .zh-cell { display:none; }
 
-  /* ===== 封面 ===== */
   .cover { background:linear-gradient(150deg, #020814 0%, #06112b 25%, #0b1f4a 50%, #0a1835 75%, #020814 100%); color:#fff; padding:60px 40px 50px; text-align:center; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; overflow:hidden; }
   .cover::before { content:''; position:absolute; top:-200px; right:-200px; width:600px; height:600px; border-radius:50%; background:radial-gradient(circle, rgba(0,160,210,0.08) 0%, transparent 70%); }
   .cover::after { content:''; position:absolute; bottom:-150px; left:-150px; width:500px; height:500px; border-radius:50%; background:radial-gradient(circle, rgba(0,210,160,0.06) 0%, transparent 70%); }
@@ -48,21 +42,21 @@
   .cover h1 { font-size:36px; font-weight:900; margin-bottom:12px; line-height:1.3; position:relative; z-index:1; }
   .cover h1 em { font-style:normal; background:linear-gradient(135deg,#00d2a0,#00a0d2); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
   .cover .subtitle { font-size:17px; opacity:0.7; margin-bottom:40px; position:relative; z-index:1; }
-  .cover .highlights { display:flex; gap:30px; position:relative; z-index:1; }
+  .cover .highlights { display:flex; gap:30px; position:relative; z-index:1; flex-wrap:wrap; justify-content:center; }
   .cover .hl-item { text-align:center; padding:0 20px; border-right:1px solid rgba(255,255,255,0.1); }
   .cover .hl-item:last-child { border:none; }
   .cover .hl-item .num { font-size:30px; font-weight:900; display:block; background:linear-gradient(135deg,#00d2a0,#00a0d2); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
   .cover .hl-item .lbl { font-size:12px; opacity:0.5; margin-top:4px; }
   .cover .bottom-info { position:absolute; bottom:30px; font-size:11px; opacity:0.35; z-index:1; }
 
-  .container { max-width:1050px; margin:0 auto; padding:30px 20px; }
+  .container { max-width:1100px; margin:0 auto; padding:30px 20px; }
 
   .company-intro { background:#fff; border-radius:14px; padding:30px 36px; margin-bottom:28px; box-shadow:0 2px 16px rgba(0,0,0,0.05); display:grid; grid-template-columns:1fr 2fr; gap:30px; align-items:center; }
   .company-intro .ci-logo { text-align:center; }
   .company-intro .ci-logo .icon { width:80px; height:80px; background:linear-gradient(135deg,#00a0d2,#00d2a0); border-radius:16px; display:inline-flex; align-items:center; justify-content:center; font-size:36px; font-weight:900; color:#fff; }
   .company-intro .ci-text h3 { font-size:20px; margin-bottom:10px; }
   .company-intro .ci-text p { font-size:13px; color:#666; line-height:1.8; margin-bottom:6px; }
-  .company-intro .ci-stats { display:flex; gap:24px; margin-top:14px; }
+  .company-intro .ci-stats { display:flex; gap:24px; margin-top:14px; flex-wrap:wrap; }
   .company-intro .ci-stats div { font-size:12px; color:#888; }
   .company-intro .ci-stats strong { font-size:18px; color:#1a1a2e; display:block; }
 
@@ -82,11 +76,12 @@
   .pc-tag.ti { background:#00a0d2; }
   .pc-tag.pl { background:#888; }
   .pc-tag.sic { background:#e76f51; }
+  .pc-tag.gan { background:#6c5ce7; }
   .pc-tag.new { background:#00d2a0; }
   .product-card .pc-specs { display:grid; grid-template-columns:1fr 1fr; gap:4px 16px; font-size:12px; }
   .product-card .pc-specs .sp { display:flex; justify-content:space-between; padding:3px 0; border-bottom:1px dotted #eee; }
-  .product-card .pc-specs .sp .sk { color:#888; }
-  .product-card .pc-specs .sp .sv { font-weight:bold; }
+  .product-card .pc-specs .sp .sk { color:#888; white-space:nowrap; margin-right:8px; }
+  .product-card .pc-specs .sp .sv { font-weight:bold; text-align:right; }
 
   table { width:100%; border-collapse:collapse; font-size:13px; margin:14px 0; }
   th { background:#f0f3f7; padding:10px 8px; text-align:left; font-weight:bold; border-bottom:2px solid #d0d5dd; font-size:12px; }
@@ -117,12 +112,16 @@
   .highlight-box h4 { color:#0a1628; margin-bottom:8px; }
   .highlight-box p { font-size:13px; color:#555; }
 
-  /* 访客统计 */
   .stats-bar { background:#fff; border-radius:12px; padding:20px 30px; margin-bottom:28px; box-shadow:0 2px 12px rgba(0,0,0,0.05); display:flex; justify-content:center; gap:40px; flex-wrap:wrap; text-align:center; }
   .stats-bar .st-item .st-num { font-size:28px; font-weight:900; color:#0a1628; }
   .stats-bar .st-item .st-lbl { font-size:12px; color:#888; margin-top:4px; }
   .stats-bar .st-divider { width:1px; background:#e8eaed; }
   @media (max-width:768px) { .stats-bar { gap:20px; } .stats-bar .st-divider { display:none; } }
+
+  .tech-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:16px 0; }
+  .tech-card { background:#fff; border-radius:10px; padding:20px; box-shadow:0 1px 10px rgba(0,0,0,0.04); text-align:center; border-top:3px solid #00a0d2; }
+  .tech-card h5 { font-size:14px; color:#1a3a6b; margin-bottom:8px; }
+  .tech-card p { font-size:12px; color:#666; line-height:1.6; }
 
   .footer { text-align:center; padding:30px; color:#999; font-size:11px; border-top:1px solid #e0e0e0; margin-top:30px; }
   .footer strong { color:#555; }
@@ -135,12 +134,13 @@
     .product-card { grid-template-columns:1fr; }
     .roadmap { grid-template-columns:repeat(2,1fr); }
     .vs-box { grid-template-columns:1fr; }
+    .tech-grid { grid-template-columns:1fr; }
+    table { font-size:11px; }
   }
 </style>
 </head>
 <body class="lang-zh">
 
-<!-- 语言切换按钮 -->
 <div class="lang-switch">
   <button id="btnZh" class="active">中文</button>
   <button id="btnEn">English</button>
@@ -159,20 +159,20 @@
     <span class="en">AI Infrastructure<br><em>CRPS Power Supply Brochure</em></span>
   </h1>
   <div class="subtitle">
-    <span class="zh">800W – 3200W 通用冗余电源 · Power Shelf · HVDC · 液冷<br>面向 NVIDIA Blackwell / Rubin / Kyber 平台</span>
-    <span class="en">800W – 3200W CRPS · Power Shelf · HVDC · Liquid Cooling<br>For NVIDIA Blackwell / Rubin / Kyber Platforms</span>
+    <span class="zh">800W – 5500W 通用冗余电源 · 33kW Power Shelf · 800V HVDC · 液冷<br>面向 NVIDIA Blackwell / Rubin / Kyber 平台</span>
+    <span class="en">800W – 5500W CRPS · 33kW Power Shelf · 800V HVDC · Liquid Cooling<br>For NVIDIA Blackwell / Rubin / Kyber Platforms</span>
   </div>
   <div class="highlights">
-    <div class="hl-item"><span class="num">800-5500</span><span class="lbl zh">瓦全功率段覆盖</span><span class="lbl en">Full Power Range</span></div>
+    <div class="hl-item"><span class="num">100W/in³</span><span class="lbl zh">峰值功率密度</span><span class="lbl en">Peak Power Density</span></div>
     <div class="hl-item"><span class="num">97.5%</span><span class="lbl zh">最高转换效率</span><span class="lbl en">Peak Efficiency</span></div>
-    <div class="hl-item"><span class="num zh">钛金</span><span class="num en">Titanium</span><span class="lbl zh">80 PLUS 认证等级</span><span class="lbl en">80 PLUS Certified</span></div>
+    <div class="hl-item"><span class="num zh">钛金级</span><span class="num en">Titanium</span><span class="lbl zh">80 PLUS 认证等级</span><span class="lbl en">80 PLUS Certified</span></div>
+    <div class="hl-item"><span class="num">SiC+GaN</span><span class="lbl zh">双宽禁带平台</span><span class="lbl en">Dual WBG Platform</span></div>
     <div class="hl-item"><span class="num">2026.5</span><span class="lbl zh">版本更新日期</span><span class="lbl en">Edition Date</span></div>
   </div>
   <div class="bottom-info zh">DOTOCOME Power Technology · 专注AI基础设施供电解决方案 · dotocome.js.org</div>
   <div class="bottom-info en">DOTOCOME Power Technology · AI Infrastructure Power Solutions · dotocome.js.org</div>
 </div>
 
-<!-- =================== 正文 Main Content =================== -->
 <div class="container">
 
 <!-- ===== 01 公司简介 About DOTOCOME ===== -->
@@ -188,16 +188,21 @@
       <p class="zh">
         DOTOCOME 是一家专注于AI基础设施供电解决方案的高科技企业，致力于为下一代人工智能数据中心提供高功率密度、高效率、高可靠性的CRPS服务器电源产品。公司产品线覆盖800W至5500W全功率段，支持风冷与液冷双技术路线，并积极布局800V HVDC高压直流供电架构。
       </p>
-      <p class="zh">DOTOCOME 以"Power the AI Revolution"为使命，对标台达、光宝等全球头部电源企业技术标准，为中国及全球客户提供具备国际竞争力的AI服务器电源产品与系统级供电方案。</p>
+      <p class="zh">
+        在全球服务器电源市场中，DOTOCOME 以"Power the AI Revolution"为使命，对标台达（Delta, 全球份额~65%）、光宝（Lite-On, ~18%）、康舒（AcBel）、长城电源、欧陆通（EUL）、村田（Murata）等行业头部企业技术标准，为中国及全球客户提供具备国际竞争力的AI服务器电源产品与系统级供电方案。
+      </p>
       <p class="en">
         DOTOCOME is a high-tech enterprise specializing in AI infrastructure power solutions, dedicated to providing high power density, high efficiency, and high reliability CRPS server power supplies for next-generation AI data centers. Our product line covers the full power range from 800W to 5500W, supports both air cooling and liquid cooling, and actively develops 800V HVDC high-voltage DC power distribution architecture.
       </p>
-      <p class="en">With the mission "Power the AI Revolution", DOTOCOME benchmarks against global leaders like Delta and Lite-On, delivering internationally competitive AI server power products and system-level solutions to customers in China and worldwide.</p>
+      <p class="en">
+        In the global server PSU market, DOTOCOME benchmarks against industry leaders — Delta (~65% global share), Lite-On (~18%), AcBel, Great Wall Power, EUL, Murata — delivering internationally competitive AI server power products and system-level solutions under the mission "Power the AI Revolution".
+      </p>
       <div class="ci-stats">
         <div><strong>800-5500W</strong><span class="zh">功率覆盖</span><span class="en">Power Range</span></div>
-        <div><strong class="zh">钛金级</strong><strong class="en">Titanium</strong><span class="zh">最高效率认证</span><span class="en">Top Efficiency</span></div>
-        <div><strong>5</strong><span class="zh">大产品系列</span><span class="en">Product Series</span></div>
-        <div><strong>SiC+GaN</strong><span class="zh">宽禁带技术</span><span class="en">Wide Bandgap Tech</span></div>
+        <div><strong class="zh">钛金级 97.5%</strong><strong class="en">97.5% Titanium</strong><span class="zh">峰值效率</span><span class="en">Peak Eff.</span></div>
+        <div><strong>6</strong><span class="zh">大产品系列</span><span class="en">Product Series</span></div>
+        <div><strong>SiC+GaN</strong><span class="zh">宽禁带技术</span><span class="en">WBG Tech</span></div>
+        <div><strong>100W/in³</strong><span class="zh">功率密度</span><span class="en">Power Density</span></div>
       </div>
     </div>
   </div>
@@ -209,86 +214,118 @@
 
   <table>
     <tr>
-      <th class="zh">产品系列</th><th class="en">Product Series</th>
-      <th class="zh">功率段</th><th class="en">Power Range</th>
+      <th class="zh">产品系列</th><th class="en">Series</th>
+      <th class="zh">功率段</th><th class="en">Power</th>
+      <th class="zh">功率密度</th><th class="en">Power Density</th>
       <th class="zh">效率等级</th><th class="en">Efficiency</th>
-      <th class="zh">输入电压</th><th class="en">Input Voltage</th>
-      <th class="zh">输出电压</th><th class="en">Output</th>
-      <th class="zh">冷却方式</th><th class="en">Cooling</th>
-      <th class="zh">目标场景</th><th class="en">Target Application</th>
+      <th class="zh">输入电压</th><th class="en">Input</th>
+      <th class="zh">输出</th><th class="en">Output</th>
+      <th class="zh">冷却</th><th class="en">Cooling</th>
+      <th class="zh">尺寸</th><th class="en">Form Factor</th>
+      <th class="zh">目标场景</th><th class="en">Target</th>
       <th class="zh">状态</th><th class="en">Status</th>
     </tr>
     <tr>
       <td><strong>CRPS-800</strong></td>
-      <td>800W / 1000W</td><td>80+ Platinum (94%+)</td><td>100-240V AC</td><td>12V / 54V</td>
-      <td class="zh">风冷</td><td class="en">Air Cooling</td>
-      <td class="zh">通用机架服务器</td><td class="en">General Rack Servers</td>
-      <td class="zh">✅ 量产</td><td class="en">✅ Mass Production</td>
+      <td>800W / 1000W</td><td>24 W/in³</td><td>80+ Platinum</td><td>100-240V AC / 240V DC</td><td>12V / 54V</td>
+      <td class="zh">风冷</td><td class="en">Air</td><td>185×73.5×39mm</td>
+      <td class="zh">通用机架服务器</td><td class="en">General Rack</td>
+      <td class="zh">✅ 量产</td><td class="en">✅ MP</td>
     </tr>
     <tr>
       <td><strong>CRPS-1600</strong></td>
-      <td>1200W / 1600W</td><td>80+ Platinum (94%+)</td><td>100-240V AC</td><td>12V / 54V</td>
-      <td class="zh">风冷</td><td class="en">Air Cooling</td>
+      <td>1200W / 1600W</td><td>48 W/in³</td><td>80+ Platinum</td><td>100-240V AC / 240V DC</td><td>12V / 54V</td>
+      <td class="zh">风冷</td><td class="en">Air</td><td>185×73.5×39mm</td>
       <td class="zh">高密度计算, 存储</td><td class="en">HPC, Storage</td>
-      <td class="zh">✅ 量产</td><td class="en">✅ Mass Production</td>
+      <td class="zh">✅ 量产</td><td class="en">✅ MP</td>
     </tr>
     <tr>
       <td><strong>CRPS-2000</strong></td>
-      <td>2000W / 2400W</td><td>80+ Platinum (95%+)</td><td>200-240V AC / 240V DC</td><td>54V</td>
-      <td class="zh">风冷</td><td class="en">Air Cooling</td>
-      <td class="zh">GPU 2-4卡服务器</td><td class="en">GPU 2-4 Card Servers</td>
-      <td class="zh">✅ 量产</td><td class="en">✅ Mass Production</td>
+      <td>2000W / 2400W</td><td>60 W/in³</td><td>80+ Titanium (96%+)</td><td>200-277V AC / 240-400V DC</td><td>54V</td>
+      <td class="zh">风冷</td><td class="en">Air</td><td>185×73.5×39mm</td>
+      <td class="zh">GPU 2-4卡, 存储</td><td class="en">GPU 2-4 Card</td>
+      <td class="zh">✅ 量产</td><td class="en">✅ MP</td>
     </tr>
     <tr class="hl-row">
-      <td><strong class="zh">CRPS-3000 旗舰系列</strong><strong class="en">CRPS-3000 Flagship</strong></td>
-      <td>2600W / 3000W</td><td>80+ Platinum (95%+)</td><td>100-240V AC / 240V DC</td><td>54V</td>
-      <td class="zh">风冷</td><td class="en">Air Cooling</td>
-      <td class="zh">GPU 4-8卡, H100/H200</td><td class="en">GPU 4-8 Card, H100/H200</td>
-      <td class="zh">✅ 主力量产</td><td class="en">✅ Main Production</td>
+      <td><strong class="zh">CRPS-3000 旗舰</strong><strong class="en">CRPS-3000 Flagship</strong></td>
+      <td>2600W / 3000W</td><td>72 W/in³</td><td>80+ Platinum (95.5%+)</td><td>100-240V AC / 240V DC</td><td>12V / 54V</td>
+      <td class="zh">风冷</td><td class="en">Air</td><td>265×73.5×39mm</td>
+      <td class="zh">GPU 4-8卡, H100/H200</td><td class="en">4-8 GPU, H100/H200</td>
+      <td class="zh">✅ 主力量产</td><td class="en">✅ Main MP</td>
     </tr>
     <tr>
-      <td><strong class="zh">CRPS-3200 钛金系列</strong><strong class="en">CRPS-3200 Titanium</strong></td>
-      <td>3200W</td><td>80+ Titanium (96.5%+)</td><td>200-240V AC / 240V DC</td><td>54V</td>
-      <td class="zh">风冷</td><td class="en">Air Cooling</td>
-      <td class="zh">GPU 8卡, H200/B200</td><td class="en">8-GPU, H200/B200</td>
-      <td class="zh">✅ 量产</td><td class="en">✅ Mass Production</td>
+      <td><strong class="zh">CRPS-3200 钛金</strong><strong class="en">CRPS-3200 Ti</strong></td>
+      <td>3200W</td><td>81 W/in³</td><td>80+ Titanium (96.5%+)</td><td>200-277V AC / 240-400V DC</td><td>54V</td>
+      <td class="zh">风冷</td><td class="en">Air</td><td>185×73.5×39mm</td>
+      <td class="zh">8-GPU, H200/B200</td><td class="en">8-GPU, H200/B200</td>
+      <td class="zh">✅ 量产</td><td class="en">✅ MP</td>
     </tr>
     <tr>
-      <td><strong class="zh">CRPS-3600 钛金系列</strong><strong class="en">CRPS-3600 Titanium</strong></td>
-      <td>3600W</td><td>80+ Titanium (96.5%+)</td><td>200-240V AC / 240V DC</td><td>54V</td>
+      <td><strong class="zh">CRPS-3600 钛金</strong><strong class="en">CRPS-3600 Ti</strong></td>
+      <td>3600W</td><td>90 W/in³</td><td>80+ Titanium (96.5%+)</td><td>200-277V AC / 240-400V DC</td><td>54V</td>
       <td class="zh">风冷/液冷</td><td class="en">Air/Liquid</td>
-      <td class="zh">B200, 高密GPU节点</td><td class="en">B200, High-Density GPU</td>
-      <td class="zh">✅ 量产</td><td class="en">✅ Mass Production</td>
+      <td>265×73.5×39mm</td>
+      <td class="zh">B200/GB300 高密GPU</td><td class="en">B200/GB300 GPU</td>
+      <td class="zh">✅ 量产</td><td class="en">✅ MP</td>
     </tr>
     <tr class="hl-row">
-      <td><strong class="zh">CRPS-5500 超钛金</strong><strong class="en">CRPS-5500 Ultra-Titanium</strong></td>
-      <td>4800W / 5500W</td><td class="zh">超钛金 (97%+)</td><td class="en">Ultra-Titanium (97%+)</td>
+      <td><strong class="zh">CRPS-5500 超钛金</strong><strong class="en">CRPS-5500 Ultra-Ti</strong></td>
+      <td>4800W / 5500W</td><td>≥100 W/in³</td><td class="zh">超钛金 (97%+)</td><td class="en">Ultra-Ti (97%+)</td>
       <td>200-277V AC / 240-400V DC</td><td>54V</td>
-      <td class="zh">液冷</td><td class="en">Liquid Cooling</td>
-      <td class="zh">多GPU并行AI训练</td><td class="en">Multi-GPU AI Training</td>
+      <td class="zh">液冷</td><td class="en">Liquid</td><td>265×73.5×39mm</td>
+      <td class="zh">多GPU AI训练</td><td class="en">Multi-GPU Training</td>
       <td class="zh">🆕 2026新品</td><td class="en">🆕 New 2026</td>
     </tr>
     <tr>
       <td><strong>Power Shelf 33kW</strong></td>
-      <td>33kW (5.5kW×6)</td><td>97%+</td><td class="zh">3相 380-480V AC</td><td class="en">3-Phase 380-480V AC</td>
+      <td class="zh">33kW (5.5kW×6)</td><td class="en">33kW</td>
+      <td>—</td><td>97%+</td>
+      <td class="zh">3相 380-480V AC</td><td class="en">3-Phase 380-480V AC</td>
       <td>50V DC Bus</td>
-      <td class="zh">液冷</td><td class="en">Liquid Cooling</td>
+      <td class="zh">液冷冷板</td><td class="en">Cold Plate</td>
+      <td>1U / 21" Rack</td>
       <td>NVIDIA GB200 NVL72</td>
       <td class="zh">🆕 2026新品</td><td class="en">🆕 New 2026</td>
     </tr>
     <tr>
-      <td class="zh"><strong>液冷浸没式系列</strong></td><td class="en"><strong>Immersion Cooling Series</strong></td>
-      <td>1600W / 3000W</td><td>80+ Platinum/Titanium</td><td>200-240V AC / 240V DC</td><td>54V</td>
-      <td class="zh">浸没式液冷</td><td class="en">Immersion Cooling</td>
-      <td class="zh">液冷数据中心, 低PUE</td><td class="en">Liquid-Cooled DC, Low PUE</td>
-      <td class="zh">✅ 批量供应</td><td class="en">✅ In Supply</td>
+      <td><strong>Power Shelf ORV3</strong></td>
+      <td class="zh">15kW / 27.5kW</td><td class="en">15kW / 27.5kW</td>
+      <td>—</td><td>97.5%</td>
+      <td class="zh">单相 208-277V AC</td><td class="en">1-Ph 208-277V AC</td>
+      <td>50V DC Bus</td>
+      <td class="zh">风冷/液冷</td><td class="en">Air/Liquid</td>
+      <td>1U / 21" Rack</td>
+      <td class="zh">OCP ORV3 标准机架</td><td class="en">OCP ORV3 Racks</td>
+      <td class="zh">✅ 量产</td><td class="en">✅ MP</td>
+    </tr>
+    <tr>
+      <td class="zh"><strong>液冷浸没式系列</strong></td><td class="en"><strong>Immersion Series</strong></td>
+      <td>1600W / 3000W</td><td>—</td><td>80+ Platinum/Titanium</td><td>200-240V AC / 240V DC</td><td>54V</td>
+      <td class="zh">浸没式液冷</td><td class="en">Immersion</td>
+      <td>CRPS 185/265</td>
+      <td class="zh">液冷DC, PUE<1.1</td><td class="en">Liq-DC, PUE<1.1</td>
+      <td class="zh">✅ 批量</td><td class="en">✅ Supply</td>
     </tr>
     <tr>
       <td><strong>BBU Shelf</strong></td>
-      <td class="zh">机架级备用</td><td class="en">Rack-Level Backup</td><td>—</td><td>—</td><td>50V DC</td>
-      <td class="zh">风冷</td><td class="en">Air Cooling</td>
-      <td class="zh">服务器掉电保护</td><td class="en">Server Power Loss Protection</td>
-      <td class="zh">✅ 量产</td><td class="en">✅ Mass Production</td>
+      <td class="zh">4kW/BBU, 16kW/Shelf</td><td class="en">4kW/BBU, 16kW/Shelf</td>
+      <td>—</td><td>—</td><td>—</td><td>50V DC</td>
+      <td class="zh">风冷</td><td class="en">Air</td>
+      <td>2U / 21" Rack</td>
+      <td class="zh">掉电保护 120s</td><td class="en">Hold-up 120s</td>
+      <td class="zh">✅ 量产</td><td class="en">✅ MP</td>
+    </tr>
+    <tr>
+      <td><strong class="zh">800V HVDC平台</strong><strong class="en">800V HVDC Plat.</strong></td>
+      <td class="zh">72kW AC/DC + 90kW DC/DC</td><td class="en">72kW AC/DC + 90kW DC/DC</td>
+      <td>—</td>
+      <td>98%</td>
+      <td class="zh">3相 AC → 800V DC</td><td class="en">3-Ph AC → 800V DC</td>
+      <td class="zh">800V→50V/12V</td><td class="en">800V→50V/12V</td>
+      <td class="zh">液冷</td><td class="en">Liquid</td>
+      <td>Sidecar / Rack</td>
+      <td class="zh">Kyber 2027+</td><td class="en">Kyber 2027+</td>
+      <td class="zh">🔬 研发验证</td><td class="en">🔬 R&D</td>
     </tr>
   </table>
 </div>
@@ -297,7 +334,6 @@
 <div class="section page-break" id="flagship">
   <h2><span class="sec-num">03</span> <span class="zh">旗舰产品详情</span><span class="en">Flagship Products</span></h2>
 
-  <!-- CRPS-3000 -->
   <div class="product-card">
     <div class="pc-image">
       <div class="psu-icon">⚡</div>
@@ -311,22 +347,20 @@
       <span class="pc-tag ti">80+ Platinum</span><span class="pc-tag sic">SiC</span><span class="pc-tag new zh">热插拔</span><span class="pc-tag new en">Hot-Swap</span>
       <div class="pc-specs">
         <div class="sp"><span class="sk zh">型号</span><span class="sk en">Model</span><span class="sv">DC-CRPS3000L5R</span></div>
-        <div class="sp"><span class="sk zh">额定功率</span><span class="sk en">Rated Power</span><span class="sv">3000W (210-240V AC)</span></div>
-        <div class="sp"><span class="sk zh">输入电压</span><span class="sk en">Input Voltage</span><span class="sv zh">100-240V AC 宽范围 + 240V DC</span><span class="sv en">100-240V AC Wide Range + 240V DC</span></div>
-        <div class="sp"><span class="sk zh">输出</span><span class="sk en">Output</span><span class="sv">+54V / 55A · +12VSB / 2A</span></div>
-        <div class="sp"><span class="sk zh">峰值效率</span><span class="sk en">Peak Efficiency</span><span class="sv">95.12% (@50% Load)</span></div>
-        <div class="sp"><span class="sk">PFC</span><span class="sv zh">无桥式图腾柱 PFC + SiC 碳化硅肖特基</span><span class="sv en">Bridgeless Totem-Pole PFC + SiC Schottky</span></div>
-        <div class="sp"><span class="sk zh">主变换拓扑</span><span class="sk en">Main Topology</span><span class="sv zh">全桥 LLC 谐振 + 同步整流</span><span class="sv en">Full-Bridge LLC Resonant + Sync Rectifier</span></div>
-        <div class="sp"><span class="sk zh">数字控制</span><span class="sk en">Digital Control</span><span class="sv zh">DSP 数字电源控制 (TI 平台)</span><span class="sv en">DSP Digital Power Control (TI Platform)</span></div>
-        <div class="sp"><span class="sk zh">功率器件</span><span class="sk en">Power Devices</span><span class="sv zh">英飞凌 CoolMOS + Wolfspeed SiC 二极管</span><span class="sv en">Infineon CoolMOS + Wolfspeed SiC Diodes</span></div>
-        <div class="sp"><span class="sk zh">管理接口</span><span class="sk en">Management</span><span class="sv">PMBus 1.2+ · Digital Monitoring · Hot-Swap</span></div>
-        <div class="sp"><span class="sk zh">尺寸 (CRPS)</span><span class="sk en">Dimensions (CRPS)</span><span class="sv">265 × 73.7 × 39.3 mm (1U Standard)</span></div>
-        <div class="sp"><span class="sk zh">认证</span><span class="sk en">Certifications</span><span class="sv zh">80 PLUS 铂金 · CQC 4级 · Intel ATX 3.1 · PCIe 5.1</span><span class="sv en">80 PLUS Platinum · CQC Level 4 · Intel ATX 3.1 · PCIe 5.1</span></div>
+        <div class="sp"><span class="sk zh">额定功率</span><span class="sk en">Rated</span><span class="sv">3000W (210-240V AC) / 1200W (100-140V AC)</span></div>
+        <div class="sp"><span class="sk zh">输入电压</span><span class="sk en">Input</span><span class="sv">100-240V AC 宽范围 + 240V DC (峰值300Vac/350Vdc)</span></div>
+        <div class="sp"><span class="sk zh">输出</span><span class="sk en">Output</span><span class="sv">+54V / 55A · +12VSB / 2.5A</span></div>
+        <div class="sp"><span class="sk zh">效率</span><span class="sk en">Efficiency</span><span class="sv">94%+ (20%-50%负载) · 峰值 95.12%</span></div>
+        <div class="sp"><span class="sk zh">PFC拓扑</span><span class="sk en">PFC</span><span class="sv zh">无桥图腾柱 PFC + SiC 碳化硅二极管</span><span class="sv en">Bridgeless Totem-Pole PFC + SiC Diode</span></div>
+        <div class="sp"><span class="sk zh">DC/DC拓扑</span><span class="sk en">DC/DC</span><span class="sv zh">全桥 LLC 谐振 + 同步整流 (DSP)</span><span class="sv en">FB-LLC Resonant + Sync Rectifier (DSP)</span></div>
+        <div class="sp"><span class="sk zh">保持时间</span><span class="sk en">Hold-Up</span><span class="sv">≥10ms @ 100% Load</span></div>
+        <div class="sp"><span class="sk zh">管理接口</span><span class="sk en">Mgmt</span><span class="sv">PMBus 1.2+ · Blackbox 15条 · Active Current Sharing <5%</span></div>
+        <div class="sp"><span class="sk zh">尺寸</span><span class="sk en">Dims</span><span class="sv">265 × 73.5 × 39.3 mm (1U Standard)</span></div>
+        <div class="sp"><span class="sk zh">认证</span><span class="sk en">Cert</span><span class="sv zh">80 PLUS 铂金 · CQC 4级 · UL/EN 62368-1 · CE · CCC</span><span class="sv en">80 PLUS Platinum · CQC Lv4 · UL/EN 62368-1 · CE · CCC</span></div>
       </div>
     </div>
   </div>
 
-  <!-- CRPS-3200 -->
   <div class="product-card" style="border-left-color:#00d2a0;">
     <div class="pc-image" style="background:linear-gradient(135deg,#e8f5f0,#f0fdf8);">
       <div class="psu-icon">🔋</div>
@@ -337,24 +371,24 @@
     <div class="pc-info">
       <h4 class="zh">DOTOCOME CRPS-3200 钛金级 AI服务器电源</h4>
       <h4 class="en">DOTOCOME CRPS-3200 Titanium AI Server PSU</h4>
-      <span class="pc-tag ti">80+ Titanium</span><span class="pc-tag sic">SiC+GaN</span><span class="pc-tag new zh">AI优化</span><span class="pc-tag new en">AI-Optimized</span>
+      <span class="pc-tag ti">80+ Titanium</span><span class="pc-tag sic">SiC</span><span class="pc-tag gan">GaN</span><span class="pc-tag new zh">AI优化</span><span class="pc-tag new en">AI-Optimized</span>
       <div class="pc-specs">
         <div class="sp"><span class="sk zh">型号</span><span class="sk en">Model</span><span class="sv">DC-CRPS3200T</span></div>
-        <div class="sp"><span class="sk zh">额定功率</span><span class="sk en">Rated Power</span><span class="sv">3200W (200-240V AC)</span></div>
+        <div class="sp"><span class="sk zh">额定功率</span><span class="sk en">Rated</span><span class="sv">3200W (200-277V AC) / 1200W (100-140V AC)</span></div>
         <div class="sp"><span class="sk zh">输入</span><span class="sk en">Input</span><span class="sv">200-277V AC / 240-400V DC</span></div>
         <div class="sp"><span class="sk zh">输出</span><span class="sk en">Output</span><span class="sv">+54V / 59A · Standby +12VSB / 3A</span></div>
-        <div class="sp"><span class="sk zh">峰值效率</span><span class="sk en">Peak Efficiency</span><span class="sv">96.5% (@50% Load)</span></div>
-        <div class="sp"><span class="sk">PFC</span><span class="sv zh">SiC MOSFET 图腾柱PFC + GaN辅助</span><span class="sv en">SiC MOSFET Totem-Pole PFC + GaN Auxiliary</span></div>
-        <div class="sp"><span class="sk zh">主变换</span><span class="sk en">Main Topology</span><span class="sv zh">全桥LLC + 同步整流 (DSP控制)</span><span class="sv en">Full-Bridge LLC + Sync Rectifier (DSP)</span></div>
-        <div class="sp"><span class="sk zh">功率密度</span><span class="sk en">Power Density</span><span class="sv">≥ 50W/in³</span></div>
-        <div class="sp"><span class="sk zh">管理</span><span class="sk en">Management</span><span class="sv">PMBus 1.2+ · Blackbox Log · Hot-Swap</span></div>
+        <div class="sp"><span class="sk zh">效率</span><span class="sk en">Efficiency</span><span class="sv">90% @10% · 94% @20% · 96.5% @50% · 91% @100%</span></div>
+        <div class="sp"><span class="sk">PFC</span><span class="sv zh">SiC MOSFET 图腾柱PFC + GaN HEMT辅助 (650V)</span><span class="sv en">SiC MOSFET Totem-Pole PFC + GaN HEMT Aux (650V)</span></div>
+        <div class="sp"><span class="sk zh">DC/DC</span><span class="sk en">DC/DC</span><span class="sv zh">全桥LLC + GaN同步整流 · 全数字DSP控制</span><span class="sv en">FB-LLC + GaN Sync Rect · Full Digital DSP</span></div>
+        <div class="sp"><span class="sk zh">功率密度</span><span class="sk en">Power Density</span><span class="sv">≥ 81 W/in³</span></div>
+        <div class="sp"><span class="sk zh">保持时间</span><span class="sk en">Hold-Up</span><span class="sv">≥ 10ms @ 100% Load</span></div>
+        <div class="sp"><span class="sk zh">管理</span><span class="sk en">Mgmt</span><span class="sv">PMBus 1.2+ · Blackbox Log 15条 · Hot-Swap</span></div>
+        <div class="sp"><span class="sk zh">尺寸</span><span class="sk en">Dims</span><span class="sv">185 × 73.5 × 39.3 mm</span></div>
         <div class="sp"><span class="sk zh">目标</span><span class="sk en">Target</span><span class="sv">NVIDIA H200 / B200 8-GPU Nodes</span></div>
-        <div class="sp"><span class="sk zh">认证</span><span class="sk en">Certifications</span><span class="sv">80 PLUS Titanium · UL/EN 62368-1 · CE · CCC</span></div>
       </div>
     </div>
   </div>
 
-  <!-- Power Shelf -->
   <div class="product-card" style="border-left-color:#e76f51;">
     <div class="pc-image" style="background:linear-gradient(135deg,#fef0ed,#fff5f0);">
       <div class="psu-icon">🖥️</div>
@@ -365,23 +399,23 @@
     <div class="pc-info">
       <h4 class="zh">DOTOCOME Power Shelf 33kW 机架式电源系统</h4>
       <h4 class="en">DOTOCOME Power Shelf 33kW Rack Power System</h4>
-      <span class="pc-tag ti">GB200 Compatible</span><span class="pc-tag sic zh">液冷</span><span class="pc-tag sic en">Liquid-Cooled</span><span class="pc-tag new zh">2026新品</span><span class="pc-tag new en">New 2026</span>
+      <span class="pc-tag ti">GB200 NVL72</span><span class="pc-tag sic zh">液冷冷板</span><span class="pc-tag sic en">Cold Plate</span><span class="pc-tag gan">ORV3</span><span class="pc-tag new zh">2026新品</span><span class="pc-tag new en">New 2026</span>
       <div class="pc-specs">
         <div class="sp"><span class="sk zh">型号</span><span class="sk en">Model</span><span class="sv">DC-PS33K-NVL72</span></div>
-        <div class="sp"><span class="sk zh">总功率</span><span class="sk en">Total Power</span><span class="sv zh">33kW (5.5kW × 6 PSU, 5+1冗余)</span><span class="sv en">33kW (5.5kW × 6 PSUs, 5+1 Redundant)</span></div>
-        <div class="sp"><span class="sk zh">输入</span><span class="sk en">Input</span><span class="sv zh">3相 380-480V AC (50/60Hz)</span><span class="sv en">3-Phase 380-480V AC (50/60Hz)</span></div>
-        <div class="sp"><span class="sk zh">输出母线</span><span class="sk en">Output Bus</span><span class="sv zh">50V DC (可配置12V/54V)</span><span class="sv en">50V DC (Configurable 12V/54V)</span></div>
-        <div class="sp"><span class="sk zh">系统效率</span><span class="sk en">System Efficiency</span><span class="sv zh">≥ 97% (含冗余损耗)</span><span class="sv en">≥ 97% (Including Redundancy Loss)</span></div>
-        <div class="sp"><span class="sk zh">PSU效率</span><span class="sk en">PSU Efficiency</span><span class="sv">97.5% (@50% Load)</span></div>
-        <div class="sp"><span class="sk zh">冷却</span><span class="sk en">Cooling</span><span class="sv zh">液冷 (冷板式) + 辅助风冷</span><span class="sv en">Liquid Cooling (Cold Plate) + Auxiliary Air</span></div>
-        <div class="sp"><span class="sk zh">管理</span><span class="sk en">Management</span><span class="sv zh">冗余 Shelf Manager + PMBus/IPMI</span><span class="sv en">Redundant Shelf Manager + PMBus/IPMI</span></div>
-        <div class="sp"><span class="sk zh">目标平台</span><span class="sk en">Target Platform</span><span class="sv">NVIDIA GB200 NVL72 · GB300 NVL72</span></div>
-        <div class="sp"><span class="sk zh">保护</span><span class="sk en">Protection</span><span class="sv zh">OCP/OVP/OTP/SCP · 全冗余热插拔</span><span class="sv en">OCP/OVP/OTP/SCP · Full Redundant Hot-Swap</span></div>
+        <div class="sp"><span class="sk zh">总功率</span><span class="sk en">Total</span><span class="sv">33kW (5.5kW × 6 PSU, 5+1冗余, 支持N+1)</span></div>
+        <div class="sp"><span class="sk zh">输入</span><span class="sk en">Input</span><span class="sv zh">3相 380-480V AC (50/60Hz) · 支持双输入ATS</span><span class="sv en">3-Phase 380-480V AC (50/60Hz) · Dual-Input ATS</span></div>
+        <div class="sp"><span class="sk zh">输出母线</span><span class="sk en">Bus</span><span class="sv">50V DC (可配置12V/54V)</span></div>
+        <div class="sp"><span class="sk zh">系统效率</span><span class="sk en">Sys Eff.</span><span class="sv">≥ 97% (含冗余损耗)</span></div>
+        <div class="sp"><span class="sk zh">PSU效率</span><span class="sk en">PSU Eff.</span><span class="sv">97.5% (@50% Load, 80 PLUS Titanium)</span></div>
+        <div class="sp"><span class="sk zh">PSU尺寸</span><span class="sk en">PSU Dims</span><span class="sv">68 × 600 × 40 mm</span></div>
+        <div class="sp"><span class="sk zh">冷却</span><span class="sk en">Cooling</span><span class="sv zh">液冷冷板 + 辅助风冷 · 支持浸没式变体</span><span class="sv en">Cold Plate + Aux Air · Immersion Variant</span></div>
+        <div class="sp"><span class="sk zh">管理</span><span class="sk en">Mgmt</span><span class="sv zh">冗余 Shelf Manager · RMU · PMBus/IPMI · Ethernet/Serial</span><span class="sv en">Redundant Shelf Mgr · RMU · PMBus/IPMI</span></div>
+        <div class="sp"><span class="sk zh">目标平台</span><span class="sk en">Target</span><span class="sv">NVIDIA GB200 NVL72 · GB300 NVL72 · 21" OCP ORV3</span></div>
+        <div class="sp"><span class="sk zh">保护</span><span class="sk en">Protect</span><span class="sv">OCP/OVP/OTP/SCP · 全冗余热插拔 · ATS自动切换</span></div>
       </div>
     </div>
   </div>
 
-  <!-- HVDC -->
   <div class="product-card" style="border-left-color:#6c5ce7;">
     <div class="pc-image" style="background:linear-gradient(135deg,#f5f0ff,#faf5ff);">
       <div class="psu-icon">🔌</div>
@@ -391,63 +425,120 @@
     </div>
     <div class="pc-info">
       <h4 class="zh">DOTOCOME 800V HVDC 高压直流供电平台</h4>
-      <h4 class="en">DOTOCOME 800V HVDC Power Distribution Platform</h4>
-      <span class="pc-tag ti">800V</span><span class="pc-tag sic">SiC</span><span class="pc-tag new zh">前瞻布局</span><span class="pc-tag new en">Forward-Looking</span>
+      <h4 class="en">DOTOCOME 800V HVDC Power Delivery Platform</h4>
+      <span class="pc-tag ti">800V</span><span class="pc-tag sic">1200V SiC</span><span class="pc-tag gan">GaN</span><span class="pc-tag new zh">前瞻布局</span><span class="pc-tag new en">Forward-Looking</span>
       <div class="pc-specs">
-        <div class="sp"><span class="sk zh">架构</span><span class="sk en">Architecture</span><span class="sv zh">800V DC 母线 · AC/DC Sidecar隔离</span><span class="sv en">800V DC Bus · AC/DC Sidecar Isolation</span></div>
-        <div class="sp"><span class="sk">AC/DC</span><span class="sv zh">72kW AC→800V DC (98%效率)</span><span class="sv en">72kW AC→800V DC (98% Efficient)</span></div>
-        <div class="sp"><span class="sk">DC/DC</span><span class="sv zh">90kW 800V→50V DC (98%效率)</span><span class="sv en">90kW 800V→50V DC (98% Efficient)</span></div>
-        <div class="sp"><span class="sk zh">器件平台</span><span class="sk en">Device Platform</span><span class="sv zh">1200V SiC MOSFET (主) + 650V GaN (辅)</span><span class="sv en">1200V SiC MOSFET (Primary) + 650V GaN (Aux)</span></div>
-        <div class="sp"><span class="sk zh">损耗降低</span><span class="sk en">Loss Reduction</span><span class="sv zh">比传统48V方案减少约45%铜耗</span><span class="sv en">~45% Copper Loss Reduction vs Traditional 48V</span></div>
-        <div class="sp"><span class="sk zh">端到端效率</span><span class="sk en">End-to-End Efficiency</span><span class="sv zh">电网到芯片 ~92% (传统方案~88%)</span><span class="sv en">Grid-to-Chip ~92% (Traditional ~88%)</span></div>
-        <div class="sp"><span class="sk zh">目标</span><span class="sk en">Target</span><span class="sv zh">2027年 Kyber 1MW 机架级部署</span><span class="sv en">2027 Kyber 1MW Rack-Level Deployment</span></div>
-        <div class="sp"><span class="sk zh">状态</span><span class="sk en">Status</span><span class="sv zh">研发验证阶段 · 2026 Q4工程样机</span><span class="sv en">R&D Validation · 2026 Q4 Engineering Sample</span></div>
+        <div class="sp"><span class="sk zh">架构</span><span class="sk en">Arch</span><span class="sv zh">800V DC 母线 · AC/DC Sidecar隔离 · 两级变换</span><span class="sv en">800V DC Bus · AC/DC Sidecar · 2-Stage</span></div>
+        <div class="sp"><span class="sk">AC/DC</span><span class="sv">72kW AC→800V DC (98%效率, 3相480V输入)</span></div>
+        <div class="sp"><span class="sk">DC/DC</span><span class="sv">90kW 800V→50V DC (98%效率, 隔离拓扑)</span></div>
+        <div class="sp"><span class="sk zh">器件平台</span><span class="sk en">Devices</span><span class="sv zh">1200V SiC MOSFET (主) + 650V GaN HEMT (辅) + 1700V SiC (规划)</span><span class="sv en">1200V SiC (Pri) + 650V GaN (Aux) + 1700V SiC (Plan)</span></div>
+        <div class="sp"><span class="sk zh">损耗降低</span><span class="sk en">Loss</span><span class="sv zh">比传统48V方案减少约45%铜耗</span><span class="sv en">~45% Cu Loss Reduction vs Traditional 48V</span></div>
+        <div class="sp"><span class="sk zh">端到端效率</span><span class="sk en">E2E Eff.</span><span class="sv zh">电网到芯片 ~92% (传统48V方案~88%)</span><span class="sv en">Grid-to-Chip ~92% (Traditional ~88%)</span></div>
+        <div class="sp"><span class="sk zh">目标</span><span class="sk en">Target</span><span class="sv zh">2027-2028 Kyber 1MW 机架级部署</span><span class="sv en">2027-2028 Kyber 1MW Rack Deployment</span></div>
+        <div class="sp"><span class="sk zh">状态</span><span class="sk en">Status</span><span class="sv zh">研发验证 · 2026 Q4 工程样机</span><span class="sv en">R&D Validation · 2026 Q4 ES</span></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ===== 04 技术路线图 Technology Roadmap ===== -->
+<!-- ===== 04 技术架构与技术路线图 ===== -->
 <div class="section page-break" id="roadmap">
-  <h2><span class="sec-num">04</span> <span class="zh">技术与产品路线图</span><span class="en">Technology & Product Roadmap</span></h2>
+  <h2><span class="sec-num">04</span> <span class="zh">技术架构与产品路线图</span><span class="en">Technology Architecture & Roadmap</span></h2>
 
+  <h3 class="zh">拓扑技术演进路线</h3>
+  <h3 class="en">Topology Evolution Roadmap</h3>
+  <table>
+    <tr><th></th><th class="zh">阶段一 (当前)</th><th class="en">Phase 1 (Current)</th><th class="zh">阶段二 (2026-2027)</th><th class="en">Phase 2 (2026-2027)</th><th class="zh">阶段三 (2028+)</th><th class="en">Phase 3 (2028+)</th></tr>
+    <tr>
+      <td><strong>PFC</strong></td>
+      <td>CCM Boost PFC (800-1600W)<br>Totem-Pole PFC + SiC (2000-3200W)</td>
+      <td>Interleaved Totem-Pole PFC + SiC+GaN (3200-5500W)<br>Active Bridge 无桥整流</td>
+      <td>3-Level PFC + 1700V SiC<br>Multi-Phase Interleaved<br>98.7% 目标效率</td>
+    </tr>
+    <tr>
+      <td><strong>DC/DC</strong></td>
+      <td>HB-LLC (550-1600W)<br>FB-LLC + Sync Rectifier (2000-3200W)<br>DSP全数字控制</td>
+      <td>FB-LLC + GaN 同步整流 (3200W+)<br>3-Phase LLC (4000W+)<br>PSFB 移相全桥 (宽范围)</td>
+      <td>双向GaN单级变换<br>矩阵变压器LLC<br>CLLC双向谐振</td>
+    </tr>
+    <tr>
+      <td><strong class="zh">功率器件</strong><strong class="en">Devices</strong></td>
+      <td>SiC Diode + CoolMOS (PFC)<br>Si MOSFET (LLC初级)<br>GaN评估导入</td>
+      <td>SiC MOSFET 650/1200V<br>GaN HEMT 650V 辅助开关<br>TO-LL 封装</td>
+      <td>1700V/3.3kV SiC MOSFET<br>GaN 双向开关<br>SiC+GaN全混合方案</td>
+    </tr>
+    <tr>
+      <td><strong class="zh">控制平台</strong><strong class="en">Control</strong></td>
+      <td>DSP (TI C2000 / STM32)<br>PMBus 1.2 数字监控</td>
+      <td>DSP + CPLD/FPGA 协控<br>FW OTA在线升级<br>Blackbox 20+条记录</td>
+      <td>AI预测控制<br>自适应死区优化<br>全生命周期数字孪生</td>
+    </tr>
+    <tr>
+      <td><strong class="zh">磁集成</strong><strong class="en">Magnetics</strong></td>
+      <td>分立磁件<br>PFC电感 + LLC变压器</td>
+      <td>PCB平板变压器<br>矩阵变压器<br>磁集成LLC</td>
+      <td>全PCB绕组<br>3D打印磁芯<br>平面磁件100%</td>
+    </tr>
+    <tr>
+      <td><strong class="zh">模块化</strong><strong class="en">Modular.</strong></td>
+      <td class="zh">整板设计</td><td class="en">Single Board</td>
+      <td>功能块模块化 (PFC/LLC/Aux独立)<br>跨形态共用 (CRPS/CR80/Slim)</td>
+      <td>标准化功率块<br>即插即用组合<br>自动化SMT 100%</td>
+    </tr>
+  </table>
+
+  <h3 class="zh">功率密度演进 (W/in³) — 与行业对标</h3>
+  <h3 class="en">Power Density Evolution (W/in³) — Industry Benchmarking</h3>
+  <table>
+    <tr><th></th><th>2018</th><th>2020</th><th>2022</th><th>2024</th><th>2026E</th><th>2028E</th></tr>
+    <tr><td><strong class="zh">行业平均 (CRPS 185mm)</strong><strong class="en">Industry Avg</strong></td><td>24</td><td>35</td><td>50</td><td>66</td><td>81</td><td>100</td></tr>
+    <tr><td><strong>Delta (台达)</strong></td><td>—</td><td>50.4</td><td>63.0</td><td>81.3</td><td>96.4</td><td>100.3</td></tr>
+    <tr><td><strong>AcBel (康舒)</strong></td><td>24.1</td><td>48.2</td><td>63.1</td><td>81.3</td><td>90.4</td><td>96.4</td></tr>
+    <tr><td><strong>Murata (村田)</strong></td><td>35</td><td>50</td><td>60</td><td>78</td><td>—</td><td>—</td></tr>
+    <tr style="background:#f0fdf8;"><td><strong style="color:#00a0d2;">DOTOCOME</strong></td><td style="color:#00a0d2;">—</td><td style="color:#00a0d2;">—</td><td style="color:#00a0d2;">48</td><td style="color:#00a0d2;">72</td><td style="color:#00a0d2;font-weight:bold;">81→100</td><td style="color:#00a0d2;font-weight:bold;">≥120</td></tr>
+  </table>
+
+  <h3 class="zh">产品路线图</h3>
+  <h3 class="en">Product Roadmap</h3>
   <div class="roadmap">
     <div class="rm-node current">
       <h5>🟢 2025 · <span class="zh">当前</span><span class="en">Current</span></h5>
       <ul class="zh">
         <li>CRPS 800-3000W 全系列量产</li>
-        <li>3200W 钛金上市</li>
+        <li>3200W 钛金上市 (81W/in³)</li>
         <li>SiC 碳化硅全面导入 PFC</li>
         <li>DSP 数字控制平台成熟</li>
-        <li>风冷方案为主</li>
         <li>BBU Shelf 量产</li>
+        <li>ORV3 15kW Shelf 量产</li>
       </ul>
       <ul class="en">
-        <li>CRPS 800-3000W Full Series Mass Production</li>
-        <li>3200W Titanium Launched</li>
-        <li>SiC Fully Adopted in PFC Stage</li>
-        <li>DSP Digital Control Platform Mature</li>
-        <li>Primarily Air Cooling</li>
+        <li>CRPS 800-3000W MP</li>
+        <li>3200W Titanium Launched (81W/in³)</li>
+        <li>SiC Fully Adopted in PFC</li>
+        <li>DSP Digital Control Mature</li>
         <li>BBU Shelf in Production</li>
+        <li>ORV3 15kW Shelf MP</li>
       </ul>
     </div>
     <div class="rm-node current">
       <h5>🔵 2026 · <span class="zh">扩展年</span><span class="en">Expansion</span></h5>
       <ul class="zh">
         <li><strong>Power Shelf 33kW</strong> 量产</li>
-        <li><strong>5500W 超钛金</strong> 发布</li>
+        <li><strong>5500W 超钛金</strong> 发布 (100W/in³)</li>
         <li>液冷(冷板+浸没式)批产</li>
-        <li>GaN 辅助开关导入</li>
-        <li>800V HVDC <strong>工程样机</strong></li>
+        <li>GaN 650V 辅助开关导入</li>
+        <li>800V HVDC <strong>工程样机 Q4</strong></li>
         <li>GB200 NVL72 认证推进</li>
+        <li>CRPS 2700W/3200W 钛金批产</li>
       </ul>
       <ul class="en">
-        <li><strong>Power Shelf 33kW</strong> Mass Production</li>
-        <li><strong>5500W Ultra-Titanium</strong> Released</li>
-        <li>Liquid Cooling (Cold Plate + Immersion) Batch</li>
-        <li>GaN Auxiliary Switch Introduction</li>
-        <li>800V HVDC <strong>Engineering Sample</strong></li>
-        <li>GB200 NVL72 Certification in Progress</li>
+        <li><strong>Power Shelf 33kW</strong> MP</li>
+        <li><strong>5500W Ultra-Ti</strong> (100W/in³)</li>
+        <li>Liquid Cooling Batch Production</li>
+        <li>GaN 650V Aux Switch Intro</li>
+        <li>800V HVDC <strong>ES Q4</strong></li>
+        <li>GB200 NVL72 Certification</li>
+        <li>CRPS 2700W/3200W Ti MP</li>
       </ul>
     </div>
     <div class="rm-node">
@@ -455,18 +546,22 @@
       <ul class="zh">
         <li>12-18kW 超高功率PSU</li>
         <li><strong>800V HVDC 全面部署</strong></li>
-        <li>1200V SiC + 650V GaN 混合方案</li>
+        <li>1200V SiC + 650V GaN 混合量产</li>
         <li>Kyber 平台供电方案</li>
-        <li>液冷渗透率 > 70%</li>
+        <li>Interleaved TPFC 上线</li>
+        <li>3-Phase LLC 导入</li>
         <li>SST 固态变压器方案</li>
+        <li>液冷渗透率 >70%</li>
       </ul>
       <ul class="en">
         <li>12-18kW Ultra-High Power PSU</li>
         <li><strong>800V HVDC Full Deployment</strong></li>
-        <li>1200V SiC + 650V GaN Hybrid Solution</li>
-        <li>Kyber Platform Power Solution</li>
-        <li>Liquid Cooling Penetration > 70%</li>
+        <li>1200V SiC + 650V GaN Hybrid MP</li>
+        <li>Kyber Platform Solution</li>
+        <li>Interleaved TPFC Online</li>
+        <li>3-Phase LLC Introduction</li>
         <li>SST Solid-State Transformer</li>
+        <li>Liquid Cooling >70%</li>
       </ul>
     </div>
     <div class="rm-node planning">
@@ -476,40 +571,80 @@
         <li>1500V HVDC + SST 量产</li>
         <li>3.3kV SiC MOSFET 导入</li>
         <li>双向 GaN 单级拓扑</li>
-        <li>全液冷/浸没式方案</li>
+        <li>矩阵变压器+全PCB绕组</li>
+        <li>AI预测控制+数字孪生</li>
         <li>单机柜 2MW+ 供电</li>
       </ul>
       <ul class="en">
         <li>100kW-Class PSU Module</li>
-        <li>1500V HVDC + SST Mass Production</li>
-        <li>3.3kV SiC MOSFET Introduction</li>
-        <li>Bi-Directional GaN Single-Stage Topology</li>
-        <li>Full Liquid/Immersion Cooling</li>
-        <li>Single Rack 2MW+ Power Delivery</li>
+        <li>1500V HVDC + SST MP</li>
+        <li>3.3kV SiC MOSFET Intro</li>
+        <li>Bi-Directional GaN Topology</li>
+        <li>Matrix XFMR + Full PCB</li>
+        <li>AI Predictive + Digital Twin</li>
+        <li>Single Rack 2MW+</li>
       </ul>
     </div>
   </div>
 
-  <h3 class="zh">关键技术里程碑</h3>
-  <h3 class="en">Key Technology Milestones</h3>
+  <h3 class="zh">GPU平台代际供电对照</h3>
+  <h3 class="en">GPU Platform Generation Power Mapping</h3>
   <table>
     <tr>
-      <th class="zh">时间</th><th class="en">Timeline</th>
+      <th class="zh">时间</th><th class="en">Time</th>
       <th class="zh">平台代际</th><th class="en">Platform</th>
-      <th class="zh">GPU典型功耗</th><th class="en">Typical GPU Power</th>
+      <th class="zh">GPU典型功耗</th><th class="en">GPU TDP</th>
       <th class="zh">单柜功率</th><th class="en">Rack Power</th>
-      <th class="zh">DOTOCOME PSU</th><th class="en">DOTOCOME PSU</th>
-      <th class="zh">关键架构</th><th class="en">Key Architecture</th>
+      <th class="zh">DOTOCOME方案</th><th class="en">DOTOCOME Solution</th>
+      <th class="zh">关键架构</th><th class="en">Architecture</th>
     </tr>
     <tr><td>2024-2025</td><td>Hopper (H100/H200)</td><td>700W</td><td>~40kW</td><td>CRPS-3000 / 3200</td><td class="zh">48V 传统</td><td class="en">48V Traditional</td></tr>
     <tr class="hl-row"><td>2025-2026</td><td>Blackwell (B200/GB200)</td><td>1.2kW</td><td>~132kW (NVL72)</td><td>Power Shelf 33kW</td><td class="zh">48V + 400V HVDC试点</td><td class="en">48V + 400V HVDC Pilot</td></tr>
     <tr><td>2026-2027</td><td>Blackwell Ultra (GB300)</td><td>1.8kW</td><td>~300kW (NVL144)</td><td class="zh">12-18kW PSU</td><td class="en">12-18kW PSU</td><td>800V HVDC</td></tr>
-    <tr><td>2027-2028</td><td>Rubin</td><td>2.5kW+</td><td>~500kW</td><td class="zh">18-30kW PSU</td><td class="en">18-30kW PSU</td><td>800V HVDC</td></tr>
-    <tr><td>2028+</td><td>Kyber</td><td>3.6kW+</td><td>1MW+</td><td class="zh">100kW级PSU</td><td class="en">100kW-Class PSU</td><td>800V HVDC + SST</td></tr>
+    <tr><td>2027-2028</td><td>Rubin</td><td>2.5kW+</td><td>~500kW</td><td class="zh">18-30kW PSU</td><td class="en">18-30kW PSU</td><td>800V HVDC + SST</td></tr>
+    <tr><td>2028+</td><td>Kyber</td><td>3.6kW+</td><td>1MW+</td><td class="zh">100kW级PSU</td><td class="en">100kW-Class PSU</td><td>1500V HVDC + SST</td></tr>
   </table>
+</div>
+
+<!-- ===== 05 宽禁带半导体与核心技术 ===== -->
+<div class="section page-break" id="tech-core">
+  <h2><span class="sec-num">05</span> <span class="zh">宽禁带半导体与核心技术</span><span class="en">Wide Bandgap & Core Technologies</span></h2>
+
+  <div class="tech-grid">
+    <div class="tech-card">
+      <h5>⚡ SiC 碳化硅</h5>
+      <p class="zh">1200V SiC MOSFET 用于 Totem-Pole PFC，导通电阻低至33mΩ，开关频率>100kHz。比传统Si方案效率提升2-3%，计划2027导入1700V SiC。</p>
+      <p class="en">1200V SiC MOSFET for Totem-Pole PFC, RDS(on) 33mΩ, switching >100kHz. 2-3% efficiency gain vs traditional Si. 1700V SiC planned for 2027.</p>
+    </div>
+    <div class="tech-card" style="border-top-color:#6c5ce7;">
+      <h5>🔮 GaN 氮化镓</h5>
+      <p class="zh">650V GaN HEMT 用于辅助开关和同步整流，零反向恢复损耗。TO-LL封装支持高密度集成。2028目标：双向GaN单级变换。</p>
+      <p class="en">650V GaN HEMT for auxiliary switches and sync rectification, zero reverse recovery. TO-LL package for high-density. 2028 goal: Bi-directional GaN single-stage.</p>
+    </div>
+    <div class="tech-card" style="border-top-color:#e76f51;">
+      <h5>🧲 磁集成技术</h5>
+      <p class="zh">PCB平板变压器替代传统绕线，磁集成LLC变压器+谐振电感一体化。矩阵变压器方案支持4000W+，大幅缩减体积和损耗。</p>
+      <p class="en">PCB planar transformers replace traditional wire-wound. Integrated LLC XFMR + resonant inductor. Matrix XFMR for 4000W+, reducing volume and losses.</p>
+    </div>
+    <div class="tech-card" style="border-top-color:#00d2a0;">
+      <h5>🧩 模块化设计</h5>
+      <p class="zh">借鉴AcBel和Great Wall的模块化策略：PFC/LLC/Aux独立功能块，跨CRPS/CR80/Slim共用核心模块。减少50%开发周期，提升SMT自动化率。</p>
+      <p class="en">Inspired by AcBel & Great Wall: Independent PFC/LLC/Aux blocks, shared across CRPS/CR80/Slim form factors. 50% faster dev cycle, higher SMT automation.</p>
+    </div>
+    <div class="tech-card">
+      <h5>🖥️ 全数字控制</h5>
+      <p class="zh">DSP (TI C2000 / STM32G4) + CPLD协控平台。PMBus 1.2+全数字监控，支持FW OTA在线升级。Blackbox故障记录≥15条，动态响应<100μs。</p>
+      <p class="en">DSP (TI C2000 / STM32G4) + CPLD co-processor. PMBus 1.2+ full digital monitoring, FW OTA upgrade. Blackbox ≥15 records, dynamic response <100μs.</p>
+    </div>
+    <div class="tech-card" style="border-top-color:#e76f51;">
+      <h5>🔄 供电架构演进</h5>
+      <p class="zh">12V → 48V → 54V → 800V。54V已成AI GPU主流，800V HVDC为下一代方向。支持AC+DC UPS、48V BBU、SST HVDC多种架构。</p>
+      <p class="en">12V → 48V → 54V → 800V. 54V is now AI GPU mainstream, 800V HVDC is next-gen. Supports AC+DC UPS, 48V BBU, SST HVDC architectures.</p>
+    </div>
+  </div>
 
   <h3 class="zh">宽禁带半导体导入路线</h3>
-  <h3 class="en">Wide Bandgap Semiconductor Adoption Roadmap</h3>
+  <h3 class="en">WBG Semiconductor Adoption Roadmap</h3>
   <table>
     <tr><th class="zh">技术</th><th class="en">Technology</th><th>2025</th><th>2026</th><th>2027</th><th>2028+</th></tr>
     <tr>
@@ -522,179 +657,238 @@
     <tr>
       <td><strong>GaN HEMT</strong></td>
       <td class="zh">评估阶段</td><td class="en">Evaluation</td>
-      <td class="zh">650V GaN 辅助开关导入</td><td class="en">650V GaN Aux Switch</td>
-      <td class="zh">双向GaN + 100V中低压</td><td class="en">Bi-Dir GaN + 100V LV</td>
+      <td class="zh">650V GaN 辅助开关</td><td class="en">650V GaN Aux</td>
+      <td class="zh">双向GaN + 100V中低压</td><td class="en">Bi-Dir + LV GaN</td>
       <td class="zh">全GaN单级变换</td><td class="en">Full GaN Single-Stage</td>
     </tr>
     <tr>
-      <td><strong class="zh">DOTOCOME渗透</strong><strong class="en">DOTOCOME Adoption</strong></td>
-      <td class="zh">SiC ~20%</td><td class="en">SiC ~20%</td>
-      <td class="zh">SiC ~60% · GaN ~10%</td><td class="en">SiC ~60% · GaN ~10%</td>
-      <td class="zh">SiC ~85% · GaN ~30%</td><td class="en">SiC ~85% · GaN ~30%</td>
-      <td class="zh">SiC ~95% · GaN ~50%</td><td class="en">SiC ~95% · GaN ~50%</td>
+      <td><strong class="zh">DOTOCOME渗透率</strong><strong class="en">DOTOCOME Adoption</strong></td>
+      <td>SiC ~20%</td>
+      <td>SiC ~60% · GaN ~10%</td>
+      <td>SiC ~85% · GaN ~30%</td>
+      <td>SiC ~95% · GaN ~50%</td>
     </tr>
   </table>
 </div>
 
-<!-- ===== 05 核心竞争力 Competitive Advantages ===== -->
-<div class="section page-break" id="advantages">
-  <h2><span class="sec-num">05</span> <span class="zh">DOTOCOME 核心竞争优势</span><span class="en">Competitive Advantages</span></h2>
+<!-- ===== 06 行业竞争格局与对标 ===== -->
+<div class="section page-break" id="competition">
+  <h2><span class="sec-num">06</span> <span class="zh">行业竞争格局与对标分析</span><span class="en">Industry Landscape & Benchmarking</span></h2>
 
+  <h3 class="zh">全球CRPS服务器电源竞争格局</h3>
+  <h3 class="en">Global CRPS Server PSU Competitive Landscape</h3>
+  <table>
+    <tr>
+      <th class="zh">企业</th><th class="en">Company</th>
+      <th class="zh">全球份额</th><th class="en">Share</th>
+      <th class="zh">CRPS功率段</th><th class="en">CRPS Range</th>
+      <th class="zh">最高效率</th><th class="en">Max Eff.</th>
+      <th class="zh">峰值密度</th><th class="en">Peak Density</th>
+      <th>Power Shelf</th>
+      <th>800V HVDC</th>
+      <th class="zh">液冷</th><th class="en">Liq-Cool</th>
+      <th class="zh">BBU</th>
+    </tr>
+    <tr>
+      <td><strong>Delta 台达</strong></td>
+      <td>60-65%</td>
+      <td>800W-5500W (12V/54V)</td>
+      <td>97.5%</td>
+      <td>100.3 W/in³</td>
+      <td>33kW / 72kW</td>
+      <td>72kW+90kW 样机</td>
+      <td>CDU 1.5MW</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td><strong>Lite-On 光宝</strong></td>
+      <td>15-20%</td>
+      <td>550W-5200W (12V/54V)</td>
+      <td>97.5%</td>
+      <td>~90 W/in³</td>
+      <td>33kW / ORV3 27.5kW</td>
+      <td class="zh">联盟成员</td><td class="en">Alliance</td>
+      <td>CDU+PSU</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td><strong>AcBel 康舒</strong></td>
+      <td>5-8%</td>
+      <td>550W-3200W (12V/54V/48Vdc)</td>
+      <td>96.5%</td>
+      <td>96.4 W/in³</td>
+      <td class="zh">开发中</td><td class="en">In Dev</td>
+      <td class="zh">研发中</td><td class="en">R&D</td>
+      <td class="zh">规划中</td><td class="en">Planned</td>
+      <td class="zh">规划中</td><td class="en">Planned</td>
+    </tr>
+    <tr>
+      <td><strong>Great Wall 长城</strong></td>
+      <td>3-5% (中国#1)</td>
+      <td>550W-4800W (12V/54V/HVDC)</td>
+      <td>97.5%+</td>
+      <td>100 W/in³</td>
+      <td>OCP 3kW-6kW</td>
+      <td class="zh">研发中</td><td class="en">R&D</td>
+      <td class="zh">冷板</td><td class="en">Cold Plate</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td><strong>EUL 欧陆通</strong></td>
+      <td>2-4%</td>
+      <td>350W-4000W (12V/54V)</td>
+      <td>96%</td>
+      <td>~80 W/in³</td>
+      <td class="zh">规划中</td><td class="en">Planned</td>
+      <td class="zh">研发中</td><td class="en">R&D</td>
+      <td class="zh">浸没式</td><td class="en">Immers.</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td><strong>Murata 村田</strong></td>
+      <td>2-3%</td>
+      <td>450W-7000W (12V/54V)</td>
+      <td>98% (48Vo)</td>
+      <td>78 W/in³</td>
+      <td>12kW / 18kW</td>
+      <td class="zh">未公开</td><td class="en">N/A</td>
+      <td class="zh">规划中</td><td class="en">Planned</td>
+      <td>✅ 4kW</td>
+    </tr>
+    <tr>
+      <td><strong>Aohai 奥海</strong></td>
+      <td><1%</td>
+      <td>550W-2000W (12V)</td>
+      <td>94%</td>
+      <td>~60 W/in³</td>
+      <td class="zh">PDB</td><td class="en">PDB</td>
+      <td>—</td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+    <tr class="hl-row">
+      <td style="color:#00a0d2;"><strong>DOTOCOME</strong></td>
+      <td style="color:#00a0d2;" class="zh">快速成长</td><td style="color:#00a0d2;" class="en">Growing</td>
+      <td>800W-5500W (12V/54V)</td>
+      <td>97.5%</td>
+      <td>≥100 W/in³</td>
+      <td>33kW · ORV3 27.5kW</td>
+      <td>72kW+90kW ES Q4 2026</td>
+      <td class="zh">冷板+浸没式</td><td class="en">Cold+Immers.</td>
+      <td>✅ 16kW</td>
+    </tr>
+  </table>
+
+  <h3 class="zh">DOTOCOME 差异化竞争优势</h3>
+  <h3 class="en">DOTOCOME Differentiated Competitive Advantages</h3>
   <div class="vs-box">
     <div class="vs-l">
-      <h4>🔷 <span class="zh">技术优势</span><span class="en">Technology Advantages</span></h4>
+      <h4>🔷 <span class="zh">技术与产品优势</span><span class="en">Technology & Product</span></h4>
       <ul class="zh">
-        <li><strong>全功率段覆盖</strong>：800W–5500W CRPS，一站式供货</li>
-        <li><strong>SiC+GaN 宽禁带技术</strong>：PFC效率领先同级2-3%</li>
-        <li><strong>DSP全数字控制</strong>：TI/ST平台，动态响应<100μs</li>
-        <li><strong>双冷却路线</strong>：风冷+冷板液冷+浸没式，灵活适配</li>
-        <li><strong>Power Shelf系统能力</strong>：33kW机架级供电，对标台达/光宝</li>
-        <li><strong>800V HVDC前瞻布局</strong>：工程样机2026 Q4</li>
+        <li><strong>全功率段一站式覆盖</strong>：800W–5500W CRPS + Power Shelf + BBU + HVDC，对标Delta全矩阵</li>
+        <li><strong>SiC+GaN双宽禁带平台</strong>：1200V SiC MOSFET + 650V GaN HEMT，Totem-Pole PFC效率领先同级2-3%</li>
+        <li><strong>模块化设计战略</strong>：PFC/LLC/Aux功能块独立化，跨CRPS/CR80/Slim形态共用，快速响应定制需求</li>
+        <li><strong>全数字控制</strong>：DSP+CPLD协控，动态响应<100μs，支持FW OTA和Blackbox故障诊断</li>
+        <li><strong>双冷却路线</strong>：风冷+冷板液冷+浸没式液冷，适配PUE<1.1到PUE<1.05全场景</li>
+        <li><strong>800V HVDC前瞻布局</strong>：72kW AC/DC + 90kW DC/DC，对齐Delta技术路线，2026 Q4工程样机</li>
+        <li><strong>磁集成+平板变压器</strong>：PCB绕组替代传统铜线，矩阵变压器支持4000W+密度突破</li>
       </ul>
       <ul class="en">
-        <li><strong>Full Power Coverage</strong>: 800W–5500W CRPS, one-stop supply</li>
-        <li><strong>SiC+GaN Wide Bandgap</strong>: PFC efficiency 2-3% ahead of peers</li>
-        <li><strong>DSP Digital Control</strong>: TI/ST platform, dynamic response <100μs</li>
-        <li><strong>Dual Cooling Paths</strong>: Air + Cold Plate + Immersion</li>
-        <li><strong>Power Shelf System</strong>: 33kW rack-level, competing with Delta/Lite-On</li>
-        <li><strong>800V HVDC Forward-Looking</strong>: Engineering sample 2026 Q4</li>
+        <li><strong>Full Power Range</strong>: 800W–5500W CRPS + Power Shelf + BBU + HVDC, matching Delta's full matrix</li>
+        <li><strong>SiC+GaN Dual WBG</strong>: 1200V SiC MOSFET + 650V GaN HEMT, TPFC efficiency 2-3% ahead</li>
+        <li><strong>Modular Design Strategy</strong>: Independent PFC/LLC/Aux blocks, shared across CRPS/CR80/Slim</li>
+        <li><strong>Full Digital Control</strong>: DSP+CPLD, <100μs response, FW OTA, Blackbox diagnostics</li>
+        <li><strong>Dual Cooling</strong>: Air + Cold Plate + Immersion, covering PUE<1.1 to PUE<1.05</li>
+        <li><strong>800V HVDC Forward-Looking</strong>: 72kW AC/DC + 90kW DC/DC, aligned with Delta, ES Q4 2026</li>
+        <li><strong>Magnetic Integration</strong>: PCB planar XFMR, matrix XFMR for 4000W+ density breakthrough</li>
       </ul>
     </div>
     <div class="vs-r">
-      <h4>🟢 <span class="zh">商业优势</span><span class="en">Business Advantages</span></h4>
+      <h4>🟢 <span class="zh">商业与服务优势</span><span class="en">Business & Service</span></h4>
       <ul class="zh">
-        <li><strong>响应速度</strong>：定制化方案 4-6周出样，比台系快50%+</li>
-        <li><strong>成本控制</strong>：比台达/光宝方案节省 15-25% 采购成本</li>
-        <li><strong>本地化服务</strong>：中国大陆 FAE 48小时到场支持</li>
-        <li><strong>全球交付</strong>：国内+东南亚双生产基地</li>
-        <li><strong>灵活商务</strong>：支持联合研发、ODM定制、白牌交付</li>
-        <li><strong>NVIDIA生态对接</strong>：GB200/GB300 认证推进中</li>
+        <li><strong>快速响应</strong>：定制化方案 4-6周出样，比台系厂商快50%+</li>
+        <li><strong>成本优势</strong>：比台达/光宝方案节省 15-25% 采购成本</li>
+        <li><strong>本地化FAE</strong>：中国大陆 FAE 48小时到场支持</li>
+        <li><strong>全球交付</strong>：国内+东南亚双生产基地布局</li>
+        <li><strong>灵活商务</strong>：支持联合研发、ODM定制、白牌交付、模块授权</li>
+        <li><strong>NVIDIA生态推进</strong>：GB200/GB300 认证进行中</li>
+        <li><strong>质量管理</strong>：ISO 9001/14001/45001 · IATF 16949推进 · CNAS目标认证</li>
       </ul>
       <ul class="en">
-        <li><strong>Fast Response</strong>: Custom solutions in 4-6 weeks, 50%+ faster than Taiwanese peers</li>
-        <li><strong>Cost Advantage</strong>: 15-25% savings vs Delta/Lite-On solutions</li>
-        <li><strong>Local Service</strong>: FAE on-site within 48 hours in mainland China</li>
-        <li><strong>Global Delivery</strong>: Dual production bases in China + Southeast Asia</li>
-        <li><strong>Flexible Business</strong>: Joint R&D, ODM customization, white-label delivery</li>
+        <li><strong>Fast Response</strong>: 4-6 weeks for custom solutions, 50%+ faster than Taiwanese peers</li>
+        <li><strong>Cost Advantage</strong>: 15-25% savings vs Delta/Lite-On</li>
+        <li><strong>Local FAE</strong>: 48-hour on-site support in mainland China</li>
+        <li><strong>Global Delivery</strong>: Dual production bases in China + SE Asia</li>
+        <li><strong>Flexible Business</strong>: Joint R&D, ODM, white-label, module licensing</li>
         <li><strong>NVIDIA Ecosystem</strong>: GB200/GB300 certification in progress</li>
+        <li><strong>Quality</strong>: ISO 9001/14001/45001 · IATF 16949 advancing · CNAS target</li>
       </ul>
     </div>
   </div>
-
-  <h3 class="zh">与行业头部企业对标</h3>
-  <h3 class="en">Benchmarking Against Industry Leaders</h3>
-  <table>
-    <tr>
-      <th class="zh">对标维度</th><th class="en">Dimension</th>
-      <th>台达 Delta</th><th>光宝 Lite-On</th><th class="zh">欧陆通 EUL</th><th class="en">EUL</th>
-      <th style="color:#00a0d2;">DOTOCOME</th>
-    </tr>
-    <tr>
-      <td class="zh">全球份额</td><td class="en">Global Share</td>
-      <td>60-69%</td><td>15-20%</td><td>3-5%</td>
-      <td style="color:#00a0d2;" class="zh">快速成长中</td><td style="color:#00a0d2;" class="en">Fast Growing</td>
-    </tr>
-    <tr>
-      <td class="zh">CRPS产品覆盖</td><td class="en">CRPS Coverage</td>
-      <td>800W-5500W</td><td>800W-3200W</td><td>800W-5500W</td>
-      <td style="color:#00a0d2;">800W-5500W ✅</td>
-    </tr>
-    <tr>
-      <td>Power Shelf</td>
-      <td class="zh">33kW (GB200主供)</td><td class="en">33kW (GB200 Main)</td>
-      <td class="zh">33kW (认证通过)</td><td class="en">33kW (Certified)</td>
-      <td>33kW</td>
-      <td style="color:#00a0d2;" class="zh">33kW (2026量产)</td><td style="color:#00a0d2;" class="en">33kW (2026 MP)</td>
-    </tr>
-    <tr>
-      <td>800V HVDC</td><td>72kW/90kW</td><td class="zh">联盟成员</td><td class="en">Alliance Member</td>
-      <td class="zh">研发中</td><td class="en">In R&D</td>
-      <td style="color:#00a0d2;" class="zh">研发验证 (2026 Q4样机)</td><td style="color:#00a0d2;" class="en">Validation (2026 Q4 ES)</td>
-    </tr>
-    <tr>
-      <td class="zh">液冷方案</td><td class="en">Liquid Cooling</td>
-      <td>1.5MW CDU</td><td>CDU+PSU</td>
-      <td class="zh">浸没式</td><td class="en">Immersion</td>
-      <td style="color:#00a0d2;" class="zh">冷板+浸没式 ✅</td><td style="color:#00a0d2;" class="en">Cold Plate + Immersion ✅</td>
-    </tr>
-    <tr>
-      <td class="zh">NVIDIA认证</td><td class="en">NVIDIA Cert</td>
-      <td>★★★★★</td><td>★★★★★</td><td>★★★☆☆</td>
-      <td style="color:#00a0d2;" class="zh">推进中</td><td style="color:#00a0d2;" class="en">In Progress</td>
-    </tr>
-    <tr>
-      <td>SiC</td><td>✓</td><td>✓</td><td>✓</td>
-      <td style="color:#00a0d2;">✓ SiC+GaN <span class="zh">双平台</span><span class="en">Dual-Platform</span></td>
-    </tr>
-    <tr>
-      <td class="zh">响应速度</td><td class="en">Response Speed</td>
-      <td class="zh">慢</td><td class="en">Slow</td>
-      <td class="zh">中等</td><td class="en">Medium</td>
-      <td class="zh">快</td><td class="en">Fast</td>
-      <td style="color:#00a0d2;" class="zh">极快 (4-6周)</td><td style="color:#00a0d2;" class="en">Very Fast (4-6 wks)</td>
-    </tr>
-    <tr>
-      <td class="zh">价格竞争力</td><td class="en">Price Competitiveness</td>
-      <td class="zh">基准</td><td class="en">Baseline</td>
-      <td class="zh">基准</td><td class="en">Baseline</td>
-      <td class="zh">优</td><td class="en">Good</td>
-      <td style="color:#00a0d2;" class="zh">最优 (-15~25%)</td><td style="color:#00a0d2;" class="en">Best (-15~25%)</td>
-    </tr>
-  </table>
 </div>
 
-<!-- ===== 06 应用场景 Application Scenarios ===== -->
+<!-- ===== 07 应用场景 Application Scenarios ===== -->
 <div class="section" id="scenarios">
-  <h2><span class="sec-num">06</span> <span class="zh">应用场景与解决方案</span><span class="en">Application Scenarios</span></h2>
+  <h2><span class="sec-num">07</span> <span class="zh">应用场景与解决方案</span><span class="en">Application Scenarios</span></h2>
 
   <div class="highlight-box">
-    <h4>🖥️ <span class="zh">场景一：GPU AI训练集群</span><span class="en">Scenario 1: GPU AI Training Cluster</span></h4>
-    <p class="zh"><strong>需求：</strong>单节点8×H200/B200 GPU，总功耗 ~10kW，需54V高压直流供电，支持热插拔冗余<br>
-    <strong>方案：</strong>DOTOCOME CRPS-3200 钛金 × 4 (3+1冗余) 或 CRPS-5500 超钛金 × 2 (1+1冗余)<br>
-    <strong>优势：</strong>96.5%+ 转换效率，PMBus全数字监控，支持GPU峰值负载动态响应</p>
-    <p class="en"><strong>Requirement:</strong> Single node 8×H200/B200 GPU, ~10kW total, 54V high-voltage DC, hot-swap redundancy<br>
-    <strong>Solution:</strong> DOTOCOME CRPS-3200 Titanium × 4 (3+1 redundant) or CRPS-5500 Ultra-Titanium × 2 (1+1 redundant)<br>
-    <strong>Advantage:</strong> 96.5%+ efficiency, PMBus full digital monitoring, dynamic GPU peak load response</p>
+    <h4>🖥️ <span class="zh">场景一：GPU AI训练集群 (8×H200/B200)</span><span class="en">Scenario 1: GPU AI Training (8×H200/B200)</span></h4>
+    <p class="zh"><strong>需求：</strong>单节点8卡GPU，总功耗 ~10kW，需54V高压直流供电，支持热插拔冗余，GPU峰值负载动态响应<br>
+    <strong>方案：</strong>CRPS-3200 钛金 × 4 (3+1冗余) 或 CRPS-5500 超钛金 × 2 (1+1冗余)<br>
+    <strong>优势：</strong>96.5%+ 转换效率，PMBus全数字监控，支持GPU瞬态负载 slew rate ≥10A/μs</p>
+    <p class="en"><strong>Req:</strong> 8-GPU node, ~10kW total, 54V high-voltage DC, hot-swap redundancy, GPU transient response<br>
+    <strong>Solution:</strong> CRPS-3200 Ti × 4 (3+1) or CRPS-5500 Ultra-Ti × 2 (1+1)<br>
+    <strong>Advantage:</strong> 96.5%+ efficiency, PMBus monitoring, GPU transient load support ≥10A/μs</p>
   </div>
 
   <div class="highlight-box">
     <h4>🏢 <span class="zh">场景二：NVIDIA GB200 NVL72 机柜</span><span class="en">Scenario 2: NVIDIA GB200 NVL72 Rack</span></h4>
-    <p class="zh"><strong>需求：</strong>单机柜 72×B200 GPU，总功耗 ~264kW，需系统级供电<br>
-    <strong>方案：</strong>DOTOCOME Power Shelf 33kW × 8组 (5+1冗余每组) = 264kW总供电<br>
-    <strong>优势：</strong>液冷散热，97%+系统效率，Shelf Manager集中管理，支持热插拔维护</p>
-    <p class="en"><strong>Requirement:</strong> Single rack 72×B200 GPU, ~264kW total, system-level power delivery required<br>
-    <strong>Solution:</strong> DOTOCOME Power Shelf 33kW × 8 groups (5+1 redundant each) = 264kW total<br>
-    <strong>Advantage:</strong> Liquid cooling, 97%+ system efficiency, Shelf Manager centralized control, hot-swap maintenance</p>
+    <p class="zh"><strong>需求：</strong>单机柜 72×B200 GPU，总功耗 ~132kW，需系统级供电，液冷散热<br>
+    <strong>方案：</strong>Power Shelf 33kW × 4组 (5+1冗余每组) = 132kW总供电<br>
+    <strong>优势：</strong>液冷冷板散热，97%+系统效率，Shelf Manager集中管理，冗余RMU，支持ATS双输入自动切换</p>
+    <p class="en"><strong>Req:</strong> 72×B200 GPU per rack, ~132kW total, system-level power, liquid cooling<br>
+    <strong>Solution:</strong> Power Shelf 33kW × 4 groups (5+1 each) = 132kW total<br>
+    <strong>Advantage:</strong> Cold plate liquid cooling, 97%+ system efficiency, Shelf Manager + RMU, dual-input ATS</p>
   </div>
 
   <div class="highlight-box">
-    <h4>🌐 <span class="zh">场景三：液冷数据中心</span><span class="en">Scenario 3: Liquid-Cooled Data Center</span></h4>
-    <p class="zh"><strong>需求：</strong>低PUE (<1.15)，全液冷环境，电源需兼容浸没式或冷板式散热<br>
-    <strong>方案：</strong>DOTOCOME 液冷系列 (1600W/3000W/5500W) + 浸没式液冷版<br>
-    <strong>优势：</strong>专为液冷环境设计，无风扇或低噪音风扇，支持最高65°C进液温度</p>
-    <p class="en"><strong>Requirement:</strong> Low PUE (<1.15), full liquid cooling environment, PSU compatible with immersion or cold plate<br>
-    <strong>Solution:</strong> DOTOCOME Liquid Cooling Series (1600W/3000W/5500W) + Immersion variants<br>
-    <strong>Advantage:</strong> Purpose-built for liquid cooling, fanless or low-noise fans, supports up to 65°C inlet temperature</p>
+    <h4>🌐 <span class="zh">场景三：液冷数据中心 (PUE < 1.1)</span><span class="en">Scenario 3: Liquid-Cooled DC (PUE < 1.1)</span></h4>
+    <p class="zh"><strong>需求：</strong>低PUE (<1.1)，全液冷环境，电源需兼容浸没式或冷板式散热<br>
+    <strong>方案：</strong>液冷系列 (1600W/3000W/5500W) + 浸没式液冷版本<br>
+    <strong>优势：</strong>专为液冷环境设计，支持最高65°C进液温度。对比传统风冷数据中心PUE从1.4降至1.1以下，IT负载能耗比从30%提升至50%+</p>
+    <p class="en"><strong>Req:</strong> PUE<1.1, full liquid cooling, PSU compatible with immersion or cold plate<br>
+    <strong>Solution:</strong> Liquid Cooling Series (1600W/3000W/5500W) + Immersion variants<br>
+    <strong>Advantage:</strong> Purpose-built for liquid cooling, up to 65°C inlet. PUE from 1.4→<1.1 vs traditional air-cooled, IT load ratio from 30%→50%+</p>
   </div>
 
   <div class="highlight-box">
     <h4>📡 <span class="zh">场景四：边缘AI推理节点</span><span class="en">Scenario 4: Edge AI Inference Nodes</span></h4>
-    <p class="zh"><strong>需求：</strong>分布式边缘部署，4-8卡推理节点，需宽温、高可靠性<br>
-    <strong>方案：</strong>DOTOCOME CRPS-2000/3000 宽温版 (-5°C ~ 55°C)<br>
-    <strong>优势：</strong>宽输入电压(100-240V AC)，适应边缘电力波动，MTBF > 1,000,000小时</p>
-    <p class="en"><strong>Requirement:</strong> Distributed edge deployment, 4-8 card inference nodes, wide temp, high reliability<br>
-    <strong>Solution:</strong> DOTOCOME CRPS-2000/3000 Wide-Temp Edition (-5°C ~ 55°C)<br>
-    <strong>Advantage:</strong> Wide input voltage (100-240V AC), tolerates edge power fluctuations, MTBF > 1,000,000 hrs</p>
+    <p class="zh"><strong>需求：</strong>分布式边缘部署，4-8卡推理节点，NEBS宽温要求(-5°C~55°C)，适应电网波动<br>
+    <strong>方案：</strong>CRPS-2000/3000 宽温版 + NEBS选件<br>
+    <strong>优势：</strong>宽输入电压(100-240V AC)，20ms保持时间，MTBF>1M hrs，浪涌防护6kV/6kV</p>
+    <p class="en"><strong>Req:</strong> Distributed edge, 4-8 card inference, NEBS wide temp (-5°C~55°C), grid fluctuation tolerance<br>
+    <strong>Solution:</strong> CRPS-2000/3000 Wide-Temp + NEBS options<br>
+    <strong>Advantage:</strong> Wide input (100-240V AC), 20ms hold-up, MTBF>1M hrs, surge immunity 6kV/6kV</p>
+  </div>
+
+  <div class="highlight-box">
+    <h4>🔋 <span class="zh">场景五：OCP ORV3 标准机架</span><span class="en">Scenario 5: OCP ORV3 Standard Rack</span></h4>
+    <p class="zh"><strong>需求：</strong>符合OCP ORV3规范，单相277V AC输入，50V DC母线，5+1冗余<br>
+    <strong>方案：</strong>ORV3 Power Shelf 15kW (3kW×5+1) 或 27.5kW (5.5kW×5+1)<br>
+    <strong>优势：</strong>完全符合OCP ORV3规范，支持208-277V AC单相输入，97.5%系统效率，PMBus集中管理</p>
+    <p class="en"><strong>Req:</strong> OCP ORV3 compliant, 1-phase 277V AC, 50V DC bus, 5+1 redundancy<br>
+    <strong>Solution:</strong> ORV3 Power Shelf 15kW (3kW×5+1) or 27.5kW (5.5kW×5+1)<br>
+    <strong>Advantage:</strong> Full OCP ORV3 compliance, 208-277V AC 1-phase input, 97.5% system efficiency, PMBus management</p>
   </div>
 </div>
 
-<!-- ===== 07 质量认证 Quality & Certifications ===== -->
+<!-- ===== 08 质量保证与认证 ===== -->
 <div class="section page-break" id="quality">
-  <h2><span class="sec-num">07</span> <span class="zh">质量保证与认证</span><span class="en">Quality & Certifications</span></h2>
+  <h2><span class="sec-num">08</span> <span class="zh">质量保证与认证体系</span><span class="en">Quality Assurance & Certifications</span></h2>
 
   <table>
     <tr>
-      <th class="zh">认证类别</th><th class="en">Certification</th>
+      <th class="zh">认证类别</th><th class="en">Category</th>
       <th class="zh">标准/规范</th><th class="en">Standard/Specification</th>
       <th class="zh">状态</th><th class="en">Status</th>
     </tr>
@@ -714,26 +908,32 @@
       <td class="zh">✅ 已获证</td><td class="en">✅ Certified</td>
     </tr>
     <tr>
-      <td class="zh">环境可靠性</td><td class="en">Environmental Reliability</td>
-      <td class="zh">IEC 60068 · 高低温循环 · 湿热 · 盐雾 · 振动</td>
-      <td class="en">IEC 60068 · Thermal Cycling · Humidity · Salt Fog · Vibration</td>
+      <td class="zh">环境可靠性</td><td class="en">Env. Reliability</td>
+      <td class="zh">IEC 60068 · 高低温循环 · 湿热 · 盐雾 · 振动 · HALT</td>
+      <td class="en">IEC 60068 · Thermal Cycling · Damp Heat · Salt Fog · Vibration · HALT</td>
       <td class="zh">✅ 已通过</td><td class="en">✅ Passed</td>
     </tr>
     <tr>
-      <td class="zh">平台兼容</td><td class="en">Platform Compatibility</td>
-      <td>Intel ATX 3.1 · PCIe 5.1 · CRPS 1.1</td>
+      <td class="zh">平台兼容</td><td class="en">Platform</td>
+      <td>Intel ATX 3.1 · PCIe 5.1 · CRPS 1.1 · OCP ORV3</td>
       <td class="zh">✅ 已兼容</td><td class="en">✅ Compatible</td>
     </tr>
     <tr>
-      <td class="zh">环保</td><td class="en">Environmental</td>
-      <td>RoHS 3.0 · REACH · WEEE</td>
+      <td class="zh">环保合规</td><td class="en">Environmental</td>
+      <td>RoHS 3.0 · REACH · WEEE · ErP Lot 9 (2023/2024)</td>
       <td class="zh">✅ 已合规</td><td class="en">✅ Compliant</td>
     </tr>
     <tr>
-      <td class="zh">质量管理</td><td class="en">Quality Management</td>
-      <td class="zh">ISO 9001 · ISO 14001 · IATF 16949 (推进中)</td>
-      <td class="en">ISO 9001 · ISO 14001 · IATF 16949 (In Progress)</td>
+      <td class="zh">质量管理体系</td><td class="en">QMS</td>
+      <td class="zh">ISO 9001:2015 · ISO 14001:2015 · ISO 45001:2018 · IATF 16949 (推进中)</td>
+      <td class="en">ISO 9001:2015 · ISO 14001:2015 · ISO 45001:2018 · IATF 16949 (In Progress)</td>
       <td class="zh">✅ 已获证</td><td class="en">✅ Certified</td>
+    </tr>
+    <tr>
+      <td class="zh">实验室能力</td><td class="en">Lab Capability</td>
+      <td class="zh">CNAS 目标认可 · Intertek/TUV 目击实验室 · IECEE CBTL</td>
+      <td class="en">CNAS Target · Intertek/TUV Witness · IECEE CBTL</td>
+      <td class="zh">🔨 建设中</td><td class="en">🔨 Building</td>
     </tr>
   </table>
 
@@ -746,11 +946,12 @@
       <th class="zh">标准</th><th class="en">Standard</th>
     </tr>
     <tr>
-      <td>MTBF</td><td>25°C, Full Load</td>
-      <td>> 1,000,000 hrs (Telcordia SR-332)</td>
+      <td>MTBF</td>
+      <td>25°C, Full Load</td>
+      <td>> 1,000,000 hrs (Telcordia SR-332.3)</td>
     </tr>
     <tr>
-      <td class="zh">高温老化</td><td class="en">High-Temp Burn-In</td>
+      <td class="zh">高温老化 (Burn-In)</td><td class="en">Burn-In</td>
       <td>55°C, 100% Load, 168 hrs</td>
       <td class="zh">零失效</td><td class="en">Zero Failure</td>
     </tr>
@@ -760,8 +961,8 @@
       <td class="zh">通过</td><td class="en">Passed</td>
     </tr>
     <tr>
-      <td class="zh">输入浪涌</td><td class="en">Input Surge</td>
-      <td>4kV Common / 2kV Differential</td>
+      <td class="zh">输入浪涌</td><td class="en">Surge</td>
+      <td>4kV CM / 2kV DM · 可选 6kV/6kV</td>
       <td>IEC 61000-4-5 Level 4</td>
     </tr>
     <tr>
@@ -770,16 +971,37 @@
       <td>IEC 61000-4-2 Level 4</td>
     </tr>
     <tr>
-      <td class="zh">输出保持时间</td><td class="en">Hold-Up Time</td>
-      <td>100% Load</td>
-      <td>> 20ms @ 230V AC</td>
+      <td class="zh">输出保持时间</td><td class="en">Hold-Up</td>
+      <td>100% Load @ 230V AC</td>
+      <td>> 20ms (10ms @ 100% Load for 3200W+)</td>
     </tr>
+    <tr>
+      <td class="zh">动态负载响应</td><td class="en">Dynamic Response</td>
+      <td>0.5A/μs ~ 2.5A/μs slew rate</td>
+      <td>±5% 输出电压偏差</td>
+    </tr>
+    <tr>
+      <td class="zh">HALT 高加速寿命</td><td class="en">HALT</td>
+      <td>-100°C ~ +200°C, 6-axis vibration</td>
+      <td class="zh">设计裕度验证</td><td class="en">Design Margin Verified</td>
+    </tr>
+  </table>
+
+  <h3 class="zh">制造与工艺能力</h3>
+  <h3 class="en">Manufacturing & Process Capability</h3>
+  <table>
+    <tr><th class="zh">能力项</th><th class="en">Capability</th><th class="zh">指标</th><th class="en">Specification</th></tr>
+    <tr><td>SMT自动化率</td><td>≥ 95%</td><td class="zh">全自动SMT线 + AOI + SPI检测</td><td class="en">Full Auto SMT + AOI + SPI</td></tr>
+    <tr><td>MES制造执行</td><td>100% 追溯</td><td class="zh">全流程条码追溯 · 实时SPC监控</td><td class="en">Full Traceability · Real-Time SPC</td></tr>
+    <tr><td class="zh">测试覆盖率</td><td class="en">Test Coverage</td><td>100%</td><td class="zh">ICT + FCT + 老化 + ATE + HASA</td><td class="en">ICT + FCT + Burn-In + ATE + HASA</td></tr>
+    <tr><td>CPK</td><td>≥ 1.33</td><td class="zh">关键参数过程能力指数</td><td class="en">Key Parameter Process Capability</td></tr>
+    <tr><td class="zh">ESD防护</td><td class="en">ESD Protection</td><td class="zh">全工厂</td><td class="en">Full Factory</td><td class="zh">IT设备级接地 · 离子风机覆盖</td><td class="en">IT-Level Grounding · Ion Fan Coverage</td></tr>
   </table>
 </div>
 
-<!-- ===== 08 联系我们 Contact Us ===== -->
+<!-- ===== 09 联系我们 Contact Us ===== -->
 <div class="section" id="contact">
-  <h2><span class="sec-num">08</span> <span class="zh">联系我们</span><span class="en">Contact Us</span></h2>
+  <h2><span class="sec-num">09</span> <span class="zh">联系我们</span><span class="en">Contact Us</span></h2>
 
   <div style="background:#fff;border-radius:12px;padding:30px;box-shadow:0 2px 12px rgba(0,0,0,0.05);display:grid;grid-template-columns:1fr 1fr;gap:30px;">
     <div>
@@ -792,7 +1014,7 @@
         </tr>
         <tr>
           <td style="border:none;padding:6px 8px;color:#888;" class="zh">综合邮箱</td>
-          <td style="border:none;padding:6px 8px;color:#888;" class="en">General Email</td>
+          <td style="border:none;padding:6px 8px;color:#888;" class="en">General</td>
           <td style="border:none;padding:6px 8px;"><strong>dotocome@163.com</strong></td>
         </tr>
         <tr>
@@ -814,24 +1036,26 @@
     </div>
     <div>
       <h3 style="color:#00a0d2;margin-bottom:16px;" class="zh">索取资料与样品</h3>
-      <h3 style="color:#00a0d2;margin-bottom:16px;" class="en">Request Information & Samples</h3>
+      <h3 style="color:#00a0d2;margin-bottom:16px;" class="en">Request Info & Samples</h3>
       <ul style="font-size:13px;color:#555;line-height:2.2;">
         <li class="zh">📄 完整产品规格书（PDF）</li>
         <li class="en">📄 Complete Product Datasheets (PDF)</li>
-        <li class="zh">🔌 工程样品申请（EVT/DVT）</li>
+        <li class="zh">🔌 工程样品申请（EVT/DVT阶段）</li>
         <li class="en">🔌 Engineering Sample Request (EVT/DVT)</li>
-        <li class="zh">📊 可靠性测试报告</li>
-        <li class="en">📊 Reliability Test Reports</li>
+        <li class="zh">📊 可靠性测试报告 (MTBF/HALT/ORT)</li>
+        <li class="en">📊 Reliability Test Reports (MTBF/HALT/ORT)</li>
         <li class="zh">💰 批量报价与交期咨询</li>
         <li class="en">💰 Volume Pricing & Lead Time Inquiry</li>
         <li class="zh">🤝 联合研发与ODM合作洽谈</li>
-        <li class="en">🤝 Joint R&D & ODM Partnership Discussion</li>
+        <li class="en">🤝 Joint R&D & ODM Partnership</li>
+        <li class="zh">🏭 工厂审核与质量体系评估</li>
+        <li class="en">🏭 Factory Audit & QMS Assessment</li>
       </ul>
     </div>
   </div>
 </div>
 
-<!-- ===== 访客统计 Visitor Stats ===== -->
+<!-- ===== 访客统计 ===== -->
 <div class="stats-bar" id="statsBar" style="display:none;">
   <div class="st-item">
     <div class="st-num" id="totalViews">-</div>
@@ -849,11 +1073,16 @@
   </div>
 </div>
 
-<!-- ===== 页脚 Footer ===== -->
 <div class="footer">
   <p><strong>DOTOCOME Power Technology</strong> — Power the AI Revolution</p>
-  <p class="zh">本手册内容仅供产品推广参考，具体规格以正式规格书为准。DOTOCOME 保留产品改进和规格变更的权利，恕不另行通知。</p>
-  <p class="en">This brochure is for product promotion reference only. Actual specifications are subject to formal datasheets. DOTOCOME reserves the right to make product improvements and specification changes without prior notice.</p>
+  <p class="zh">
+    本手册内容仅供产品推广参考，具体规格以正式规格书为准。DOTOCOME 保留产品改进和规格变更的权利，恕不另行通知。<br>
+    行业数据来源：公开年报、80 PLUS认证数据库、OCP公开文档、各公司官网公开资料 (2022-2024)。
+  </p>
+  <p class="en">
+    This brochure is for product promotion reference only. Actual specifications are subject to formal datasheets. DOTOCOME reserves the right to make product improvements and specification changes without prior notice.<br>
+    Industry data sources: public annual reports, 80 PLUS certification database, OCP public documents, company websites (2022-2024).
+  </p>
   <p style="margin-top:6px;">© 2026 DOTOCOME Power Technology. All rights reserved. | Version 2026.05</p>
 </div>
 
@@ -877,13 +1106,11 @@
   btnZh.addEventListener('click', function() { setLang('zh'); });
   btnEn.addEventListener('click', function() { setLang('en'); });
 
-  // Restore saved preference
   var saved = null;
   try { saved = localStorage.getItem('dotocome-lang'); } catch(e) {}
   if (saved === 'en') setLang('en');
 })();
 
-// ===== 访客统计 Visitor Counter =====
 (function() {
   var NS = 'dotocome-power';
   var KEY_TOTAL = 'total-views';
@@ -902,25 +1129,20 @@
     xhr.send();
   }
 
-  // Hit the counter (creates if not exists)
   fetchJSON(API + '/hit/' + NS + '/' + KEY_TOTAL, function(data) {
     document.getElementById('totalViews').textContent = (data.value || 0).toLocaleString();
   });
 
-  // Get today's unique views
   fetchJSON(API + '/hit/' + NS + '/' + KEY_TODAY, function(data) {
     document.getElementById('todayViews').textContent = (data.value || 0).toLocaleString();
   });
 
-  // Active visitors (rough: count sessions within last 5 minutes)
   var activeKey = 'active-' + Math.floor(Date.now() / 300000);
   fetchJSON(API + '/hit/' + NS + '/' + activeKey, function(data) {
     document.getElementById('activeVisitors').textContent = Math.max(1, data.value || 1);
-    // Reset count for old keys
     fetchJSON(API + '/update/' + NS + '/' + activeKey + '?value=1', function(){});
   });
 
-  // Show the stats bar
   document.getElementById('statsBar').style.display = 'flex';
 })();
 </script>
