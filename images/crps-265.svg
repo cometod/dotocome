@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 280">
+  <defs>
+    <linearGradient id="bodyGrad2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8ecf0"/><stop offset="100%" stop-color="#c8cdd3"/>
+    </linearGradient>
+    <linearGradient id="topGrad2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d0d5db"/><stop offset="100%" stop-color="#b0b5bb"/>
+    </linearGradient>
+    <linearGradient id="frontGrad2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d8dce0"/><stop offset="100%" stop-color="#a8acb2"/>
+    </linearGradient>
+    <linearGradient id="fanGrad2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#556"/><stop offset="100%" stop-color="#334"/>
+    </linearGradient>
+    <linearGradient id="goldGrad2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f0c040"/><stop offset="100%" stop-color="#d4a020"/>
+    </linearGradient>
+  </defs>
+
+  <ellipse cx="240" cy="255" rx="200" ry="18" fill="#00000020"/>
+
+  <!-- Top face -->
+  <polygon points="60,120 420,120 470,75 110,75" fill="url(#topGrad2)" stroke="#999" stroke-width="1"/>
+  <!-- Right side -->
+  <polygon points="420,120 470,75 470,195 420,240" fill="url(#bodyGrad2)" stroke="#999" stroke-width="1"/>
+  <!-- Front face -->
+  <polygon points="60,120 420,120 420,240 60,240" fill="url(#frontGrad2)" stroke="#999" stroke-width="1"/>
+
+  <!-- Cooling vents on top -->
+  <line x1="140" y1="95" x2="360" y2="85" stroke="#bbb" stroke-width="1.5"/>
+  <line x1="140" y1="101" x2="360" y2="91" stroke="#bbb" stroke-width="1.5"/>
+  <line x1="140" y1="107" x2="360" y2="97" stroke="#bbb" stroke-width="1.5"/>
+
+  <!-- Fan grills (dual for 265mm) -->
+  <circle cx="170" cy="180" r="42" fill="url(#fanGrad2)" stroke="#555" stroke-width="2"/>
+  <circle cx="170" cy="180" r="32" fill="none" stroke="#555" stroke-width="1"/>
+  <circle cx="170" cy="180" r="18" fill="none" stroke="#555" stroke-width="1"/>
+  <circle cx="170" cy="180" r="6" fill="#555"/>
+
+  <circle cx="310" cy="180" r="42" fill="url(#fanGrad2)" stroke="#555" stroke-width="2"/>
+  <circle cx="310" cy="180" r="32" fill="none" stroke="#555" stroke-width="1"/>
+  <circle cx="310" cy="180" r="18" fill="none" stroke="#555" stroke-width="1"/>
+  <circle cx="310" cy="180" r="6" fill="#555"/>
+
+  <!-- Handle -->
+  <rect x="200" y="100" width="80" height="10" rx="3" fill="#667" stroke="#555" stroke-width="1"/>
+  <rect x="205" y="108" width="10" height="14" rx="1" fill="#556"/>
+  <rect x="265" y="108" width="10" height="14" rx="1" fill="#556"/>
+
+  <!-- LED -->
+  <circle cx="105" cy="108" r="4" fill="#0c0"/>
+  <circle cx="120" cy="108" r="4" fill="#0c0"/>
+  <circle cx="135" cy="108" r="4" fill="#fa0"/>
+
+  <!-- Golden finger -->
+  <rect x="70" y="232" width="340" height="6" rx="1" fill="url(#goldGrad2)"/>
+
+  <!-- Label -->
+  <rect x="360" y="130" width="80" height="40" rx="2" fill="#fffc" stroke="#ccc" stroke-width="0.5"/>
+  <text x="400" y="147" text-anchor="middle" font-size="9" font-weight="bold" fill="#333">CRPS</text>
+  <text x="400" y="160" text-anchor="middle" font-size="8" fill="#666">265×73.5×39</text>
+
+  <!-- Dimension -->
+  <line x1="55" y1="240" x2="55" y2="250" stroke="#888" stroke-width="0.5"/>
+  <line x1="55" y1="245" x2="425" y2="245" stroke="#888" stroke-width="0.5" stroke-dasharray="4,3"/>
+  <line x1="425" y1="240" x2="425" y2="250" stroke="#888" stroke-width="0.5"/>
+  <text x="240" y="262" text-anchor="middle" font-size="9" fill="#666">265 mm</text>
+</svg>

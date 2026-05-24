@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320">
+  <defs>
+    <linearGradient id="arrowGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00a0d2"/><stop offset="100%" stop-color="#00d2a0"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+
+  <text x="360" y="24" text-anchor="middle" font-size="15" font-weight="bold" fill="#333">DOTOCOME AI Data Center Power Delivery Architecture</text>
+
+  <!-- Grid -->
+  <rect x="30" y="45" width="130" height="55" rx="8" fill="#1a2a44" stroke="#00a0d2" stroke-width="1.5"/>
+  <text x="95" y="68" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">Utility Grid</text>
+  <text x="95" y="84" text-anchor="middle" font-size="9" fill="#aaa">10kV / 35kV AC</text>
+
+  <!-- Arrow Grid→MV Switch -->
+  <line x1="160" y1="72" x2="210" y2="72" stroke="url(#arrowGrad)" stroke-width="2.5" marker-end="url(#arrowBlue)"/>
+  <defs><marker id="arrowBlue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#00a0d2"/></marker></defs>
+
+  <!-- MV Switchgear -->
+  <rect x="215" y="45" width="100" height="55" rx="8" fill="#1a2a44" stroke="#00a0d2" stroke-width="1.5"/>
+  <text x="265" y="68" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">MV Switchgear</text>
+  <text x="265" y="84" text-anchor="middle" font-size="9" fill="#aaa">380V/480V</text>
+
+  <!-- Arrow to Transformer -->
+  <line x1="315" y1="72" x2="365" y2="72" stroke="url(#arrowGrad)" stroke-width="2.5" marker-end="url(#arrowBlue)"/>
+
+  <!-- Transformer -->
+  <rect x="370" y="45" width="95" height="55" rx="8" fill="#1a3a5c" stroke="#0af" stroke-width="1.5"/>
+  <text x="418" y="68" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">SST / PDU</text>
+  <text x="418" y="84" text-anchor="middle" font-size="8" fill="#aaa">AC→DC · 800V</text>
+
+  <!-- Arrow to HVDC -->
+  <line x1="465" y1="72" x2="515" y2="72" stroke="url(#arrowGrad)" stroke-width="2.5" marker-end="url(#arrowBlue)"/>
+
+  <!-- HVDC Sidecar -->
+  <rect x="520" y="38" width="175" height="70" rx="8" fill="#0a1a2a" stroke="#6c5ce7" stroke-width="2" filter="url(#glow)"/>
+  <text x="607" y="58" text-anchor="middle" font-size="10" font-weight="bold" fill="#6c5ce7">⚡ 800V HVDC Bus</text>
+  <text x="607" y="74" text-anchor="middle" font-size="8" fill="#aaa">AC/DC 72kW (98% eff.)</text>
+  <text x="607" y="90" text-anchor="middle" font-size="8" fill="#aaa">DC/DC 90kW (98% eff.)</text>
+  <text x="607" y="106" text-anchor="middle" font-size="8" fill="#888" font-style="italic">2027 Target</text>
+
+  <!-- ===== Bottom: Rack Level ===== -->
+  <!-- Arrow down to Rack -->
+  <line x1="607" y1="108" x2="607" y2="135" stroke="#6c5ce7" stroke-width="2" stroke-dasharray="6,3"/>
+
+  <!-- Rack containers -->
+  <!-- Power Shelf 33kW -->
+  <rect x="130" y="140" width="210" height="110" rx="8" fill="#f0fdf8" stroke="#00d2a0" stroke-width="1.5"/>
+  <text x="235" y="162" text-anchor="middle" font-size="12" font-weight="bold" fill="#0a1628">Power Shelf 33kW</text>
+  <text x="235" y="178" text-anchor="middle" font-size="9" fill="#666">3-Phase 380-480V AC → 50V DC</text>
+  <text x="235" y="194" text-anchor="middle" font-size="9" fill="#666">5.5kW × 6 (5+1) · Cold Plate</text>
+  <text x="235" y="210" text-anchor="middle" font-size="9" fill="#666">GB200 NVL72 · N+1 Redundant</text>
+  <text x="235" y="236" text-anchor="middle" font-size="9" fill="#00a0d2">✅ 2026 Mass Production</text>
+
+  <!-- ORV3 -->
+  <rect x="380" y="140" width="210" height="110" rx="8" fill="#f0f7fa" stroke="#00a0d2" stroke-width="1.5"/>
+  <text x="485" y="162" text-anchor="middle" font-size="12" font-weight="bold" fill="#0a1628">ORV3 Power Shelf</text>
+  <text x="485" y="178" text-anchor="middle" font-size="9" fill="#666">1-Phase 208-277V AC → 50V DC</text>
+  <text x="485" y="194" text-anchor="middle" font-size="9" fill="#666">3kW×5+1 (15kW) / 5.5kW×5+1 (27.5kW)</text>
+  <text x="485" y="210" text-anchor="middle" font-size="9" fill="#666">OCP ORV3 Standard · Air/Liquid</text>
+  <text x="485" y="236" text-anchor="middle" font-size="9" fill="#00a0d2">✅ In Production</text>
+
+  <!-- BBU -->
+  <rect x="380" y="260" width="210" height="55" rx="8" fill="#fff8f0" stroke="#e76f51" stroke-width="1.5"/>
+  <text x="485" y="282" text-anchor="middle" font-size="11" font-weight="bold" fill="#0a1628">🔋 BBU Shelf 16kW</text>
+  <text x="485" y="300" text-anchor="middle" font-size="9" fill="#666">4kW/BBU × 4 · 120s Hold-Up · 54V</text>
+
+  <!-- CRPS individual -->
+  <rect x="30" y="140" width="80" height="110" rx="8" fill="#f8fafc" stroke="#999" stroke-width="1"/>
+  <text x="70" y="162" text-anchor="middle" font-size="9" font-weight="bold" fill="#333">CRPS PSU</text>
+  <text x="70" y="180" text-anchor="middle" font-size="8" fill="#666">800W</text>
+  <text x="70" y="194" text-anchor="middle" font-size="8" fill="#666">1600W</text>
+  <text x="70" y="208" text-anchor="middle" font-size="8" fill="#666">2000W</text>
+  <text x="70" y="222" text-anchor="middle" font-size="8" fill="#666">3000W</text>
+  <text x="70" y="236" text-anchor="middle" font-size="8" fill="#666">3200W</text>
+  <text x="70" y="250" text-anchor="middle" font-size="8" fill="#00d2a0">5500W</text>
+
+  <!-- Connection lines -->
+  <line x1="110" y1="195" x2="130" y2="195" stroke="#999" stroke-width="1" stroke-dasharray="4,2"/>
+  <line x1="607" y1="155" x2="607" y2="140" stroke="#6c5ce7" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="500" y1="108" x2="340" y2="140" stroke="#00a0d2" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="560" y1="108" x2="485" y2="140" stroke="#00a0d2" stroke-width="1" stroke-dasharray="4,3"/>
+</svg>
